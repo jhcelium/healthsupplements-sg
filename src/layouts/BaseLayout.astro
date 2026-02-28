@@ -9,7 +9,7 @@ interface Props {
 const { title, description, path } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-SG">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,7 +30,25 @@ const { title, description, path } = Astro.props;
       }
       header {
         border-bottom: 1px solid #e5e5e5;
-        padding: 12px 16px;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .header-logo {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+      .header-logo img {
+        height: 40px;
+        width: auto;
+        display: block;
+        opacity: 0.9;
+        transition: opacity 0.15s;
+      }
+      .header-logo:hover img {
+        opacity: 1;
       }
       footer {
         border-top: 1px solid #e5e5e5;
@@ -63,17 +81,67 @@ const { title, description, path } = Astro.props;
         font-size: 13px;
         margin: 12px 0 24px;
       }
-      .official-link {
+      .subtitle {
+        font-size: 17px;
+        color: #444;
+        margin: 4px 0 20px;
+        line-height: 1.5;
+      }
+      .cta-link {
         display: inline-block;
         border: 1px solid #0b63ce;
-        padding: 6px 10px;
+        padding: 8px 14px;
+        font-size: 14px;
+        text-decoration: none;
+        margin-bottom: 24px;
+      }
+      .cta-link:hover {
+        background: #f4f8ff;
+      }
+      .infographic {
+        margin: 32px 0;
+        padding: 0;
+      }
+      .infographic img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+      }
+      .infographic figcaption {
+        font-size: 12px;
+        color: #777;
+        margin-top: 6px;
+        text-align: center;
+      }
+      .brand-link {
+        display: inline-block;
+        border: 1px solid #999;
+        color: #444;
+        padding: 7px 13px;
         font-size: 14px;
         text-decoration: none;
       }
-      .official-link:hover {
-        background: #f4f8ff;
+      .brand-link:hover {
+        border-color: #555;
+        color: #111;
+        background: #f7f7f7;
       }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "Health Supplements Singapore",
+      "about": "Dietary supplements in Singapore",
+      "audience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Consumer"
+      },
+      "inLanguage": "en-SG"
+    }
+    </script>
   </head>
   <body>
     <header>
@@ -82,16 +150,20 @@ const { title, description, path } = Astro.props;
         <a href="/about">About</a>
         <a href="/faq">FAQ</a>
       </nav>
+      <a
+        href="https://supplement.neoi.jp/en"
+        target="_blank"
+        rel="noopener"
+        class="header-logo"
+        aria-label="Visit Official Neoi Supplement Site"
+      >
+        <img src="/images/neoi-logo.png" alt="Neoi supplement.neoi.jp" />
+      </a>
     </header>
     <main><slot /></main>
     <footer>
       <div>{site.siteName}</div>
       <div>Educational content only. Not medical or treatment advice.</div>
-      <div style="margin-top:8px">
-        <a href={site.officialSite} target="_blank" rel="noopener noreferrer">
-          Official Neoi Site
-        </a>
-      </div>
     </footer>
   </body>
 </html>

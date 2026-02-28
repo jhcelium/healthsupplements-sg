@@ -5,4 +5,28 @@ const about = loadMarkdown("about.md");
 ---
 <BaseLayout title={about.frontmatter.title} description={about.frontmatter.description} path="/about">
   <article set:html={about.html} />
+
+  <figure class="infographic">
+    <img
+      src="/images/how-to-use-this-site.png"
+      alt="5-step guide on how to use this site: 1. Start with the basics, 2. Identify your research goal, 3. Take notes for your clinician, 4. Consult a healthcare professional, 5. Review periodically. Reminder: this site does not recommend specific products or doses."
+      width="762"
+      height="1010"
+      loading="lazy"
+    />
+    <figcaption>A step-by-step guide for Singapore residents on how to use this site effectively.</figcaption>
+  </figure>
+
+  <section>
+    <h2>Official Brand Information</h2>
+    <p>For Neoi brand and product information, visit the official site:</p>
+    <p>
+      <a
+        href="https://supplement.neoi.jp/en"
+        target="_blank"
+        rel="noopener"
+        class="brand-link"
+      >Visit Official Neoi Supplement Site →</a>
+    </p>
+  </section>
 </BaseLayout>

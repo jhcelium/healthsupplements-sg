@@ -1,18 +1,22 @@
 ---
-title: Health Supplements in Singapore
-description: An educational, non-medical guide to understanding health supplements in Singapore with a Japan-inspired long-term routine perspective.
+title: Evidence-Based Consumer Guide
+description: "Independent educational guidance on health supplements in Singapore: categories, label reading, buying contexts, and safe-use considerations."
 primary_kw: health supplements singapore
-secondary_kws: ["buy supplements online singapore", "supplement brands in singapore"]
 ---
 
-## What this site is about
+## What this site covers
 
-This site is a calm, text-focused reference for people in Singapore who want a practical overview of health supplements. It does not sell products, make treatment claims, or give personal medical advice.
+A structured, text-focused reference for Singapore residents who want a practical overview of health supplements — including category definitions, label reading principles, buying contexts, and common misconceptions. This site does not sell products or provide personal medical recommendations.
 
-## Singapore: pharmacy vs online
+## Singapore: Pharmacy vs Online
 
-Singapore residents encounter supplements in pharmacies, supermarkets, and online platforms. Buying in-store lets you speak directly with a pharmacist about label reading and ingredient overlaps. Online platforms offer wider variety and price comparison, but require more careful seller verification — look for stable product information, clear contact details, and reasonable ingredient descriptions.
+Health supplements in Singapore are commonly purchased through pharmacies, supermarkets, and online platforms.
 
-## Japan perspective: consistency over quick fixes
+- Pharmacies allow direct discussion about ingredient overlaps and label interpretation.
+- Online platforms provide broader selection and price comparison, but require careful verification of seller credibility and product information consistency.
 
-In Japan, supplements tend to be treated as a quiet, steady part of a daily routine rather than a solution to an urgent problem. Small, repeatable habits — consistent timing, moderate amounts, regular review with a clinician — are valued over intensive short-term use. This mindset can be useful when evaluating whether a product fits your life in Singapore long term.
+## A Japan Perspective: Consistency Over Quick Fixes
+
+In Japan, supplements are often treated as part of a steady daily routine rather than an urgent intervention. Moderate, repeatable habits — consistent timing, stable intake, and periodic review with a clinician — are typically valued over intensive short-term use.
+
+This perspective can help Singapore residents evaluate whether a supplement fits into long-term lifestyle patterns.

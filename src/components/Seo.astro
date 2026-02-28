@@ -7,8 +7,8 @@ interface Props {
 }
 const { title, description, path } = Astro.props;
 
-const fullTitle = title ? `${title} | ${site.siteName}` : site.siteName;
-const canonical = `https://${site.domain}${path ?? "/"}`;
+const fullTitle = title ? `${site.siteName} | ${title}` : site.siteName;
+const canonical = `${site.domain}${path ?? "/"}`;
 const desc = description ?? "";
 ---
 <title>{fullTitle}</title>

@@ -17,14 +17,74 @@ const faqJsonLd = JSON.stringify({
 });
 ---
 <BaseLayout title={frontmatter.title} description={frontmatter.description} path="/faq">
+  <style>
+    details {
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+      margin-bottom: 8px;
+      padding: 0;
+    }
+    details summary {
+      font-weight: 600;
+      font-size: 15px;
+      padding: 10px 12px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    details summary::before {
+      content: "+";
+      font-size: 16px;
+      color: #888;
+      flex-shrink: 0;
+    }
+    details[open] summary::before {
+      content: "−";
+    }
+    details .answer {
+      padding: 0 12px 10px 12px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+      border-top: 1px solid #eee;
+      margin-top: 2px;
+    }
+  </style>
+
   <h1>{frontmatter.title}</h1>
 
   <div class="disclaimer">
     General educational information only. Not medical advice.
-    If pregnant, nursing, or on medication, consult a qualified clinician.
+    If pregnant, nursing, or taking medication, consult a qualified clinician.
   </div>
 
   <article set:html={html} />
+
+  <figure class="infographic">
+    <img
+      src="/images/supplement-purchase-decision-tree.png"
+      alt="Decision tree: How should I buy my supplements? Five yes/no questions guide Singapore residents toward visiting a pharmacy (first-time buyers, multiple health conditions, urgent need) or shopping online (price comparison, confident label readers)."
+      width="762"
+      height="1010"
+      loading="lazy"
+    />
+    <figcaption>A decision guide for Singapore residents: when to visit a pharmacy vs shop online for health supplements.</figcaption>
+  </figure>
+
+  <section>
+    <h2>Official Brand Information</h2>
+    <p>For Neoi brand and product information, visit the official site:</p>
+    <p>
+      <a
+        href="https://supplement.neoi.jp/en"
+        target="_blank"
+        rel="noopener"
+        class="brand-link"
+      >Visit Official Neoi Supplement Site →</a>
+    </p>
+  </section>
 
   <script type="application/ld+json" set:html={faqJsonLd}></script>
 </BaseLayout>

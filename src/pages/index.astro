@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { loadMarkdown, loadArticle, listArticleIds } from "../lib/content";
-import site from "../../data/site.json";
 
 const home = loadMarkdown("home.md");
 const articleIds = listArticleIds();
@@ -11,18 +10,36 @@ const startHere = articleIds.slice(0, 6).map((id) => {
 });
 ---
 <BaseLayout title={home.frontmatter.title} description={home.frontmatter.description} path="/">
-  <h1>Health Supplements in Singapore</h1>
+  <h1>Health Supplements in Singapore: Evidence-Based Guidance</h1>
+
+  <p class="subtitle">
+    Understanding supplement categories, ingredient transparency, and regulatory context in Singapore.
+  </p>
 
   <div class="disclaimer">
-    This site provides general educational information on health supplements.
-    It is not medical advice, diagnosis, or treatment recommendation.
-    Always speak with a qualified clinician about your own situation.
+    This site provides general educational information only. It does not offer medical advice, diagnosis, or treatment recommendations. For personal decisions, consult a qualified clinician.
   </div>
+
+  <p>
+    <a href="/articles/01-what-is" class="cta-link">Explore the Guide →</a>
+  </p>
 
   <article set:html={home.html} />
 
+  <figure class="infographic">
+    <img
+      src="/images/pharmacy-vs-online.png"
+      alt="Comparison infographic: Pharmacy and retail stores offer direct consultation, pharmacist guidance on ingredient overlaps, and immediate label help. Online platforms offer broader selection and price comparison but require seller verification."
+      width="1080"
+      height="607"
+      loading="lazy"
+    />
+    <figcaption>Where Singapore residents purchase health supplements — key considerations for each channel.</figcaption>
+  </figure>
+
   <section>
-    <h2>Start here</h2>
+    <h2>Start Here</h2>
+    <p>Begin with the foundational guides below:</p>
     <ul>
       {startHere.map((item) => (
         <li><a href={item.href}>{item.title}</a></li>
@@ -31,23 +48,15 @@ const startHere = articleIds.slice(0, 6).map((id) => {
   </section>
 
   <section>
-    <h2>Explore related topics</h2>
-    <ul>
-      {site.exploreLinks.map((link) => (
-        <li><a href={link.url}>{link.label}</a></li>
-      ))}
-    </ul>
-  </section>
-
-  <section>
-    <h2>Official Neoi Site</h2>
+    <h2>Official Brand Information</h2>
+    <p>For Neoi brand and product information, visit the official site:</p>
     <p>
-      For product information and brand details, visit the official Neoi supplement site.
-    </p>
-    <p>
-      <a href={site.officialSite} target="_blank" rel="noopener noreferrer" class="official-link">
-        Visit Official Neoi Supplement Site →
-      </a>
+      <a
+        href="https://supplement.neoi.jp/en"
+        target="_blank"
+        rel="noopener"
+        class="brand-link"
+      >Visit Official Neoi Supplement Site →</a>
     </p>
   </section>
 </BaseLayout>
