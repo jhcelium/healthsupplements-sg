@@ -1,19 +1,33 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { loadMarkdown, loadArticle, listArticleIds } from "../lib/content";
+import { loadArticle, listArticleIds } from "../lib/content";
 
-const home = loadMarkdown("home.md");
 const articleIds = listArticleIds();
 const startHere = articleIds.slice(0, 6).map((id) => {
   const { frontmatter } = loadArticle(id);
   return { id, href: `/articles/${id}`, title: frontmatter.title };
 });
+
+const websiteJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Health Supplements Singapore",
+  "url": "https://healthsupplements.neoi.jp/",
+  "description": "An educational overview of health supplements in Singapore: categories, label transparency, and regulation context.",
+  "inLanguage": "en-SG",
+});
 ---
-<BaseLayout title={home.frontmatter.title} description={home.frontmatter.description} path="/">
-  <h1>Health Supplements in Singapore: Evidence-Based Guidance</h1>
+<BaseLayout
+  title="Evidence-Aware Guidance"
+  description="An educational overview of health supplements in Singapore: categories, label transparency, and regulation context."
+  path="/"
+>
+  <script type="application/ld+json" set:html={websiteJsonLd}></script>
+
+  <h1>Health Supplements in Singapore: Evidence-Aware Guidance</h1>
 
   <p class="subtitle">
-    Understanding supplement categories, ingredient transparency, and regulatory context in Singapore.
+    Health supplements in Singapore span a broad range of consumer products. This site focuses on ingredient transparency, label literacy, and regulatory context — not on product recommendations or dosage guidance.
   </p>
 
   <div class="disclaimer">
@@ -24,7 +38,87 @@ const startHere = articleIds.slice(0, 6).map((id) => {
     <a href="/articles/01-what-is" class="cta-link">Explore the Guide →</a>
   </p>
 
-  <article set:html={home.html} />
+  <section>
+    <h2>What counts as health supplements in Singapore</h2>
+    <p>
+      Supplement categories in Singapore cover a wide range of consumer products intended to add specific nutrients or ingredients to the diet. Common categories include:
+    </p>
+    <ul>
+      <li><strong>Vitamin and mineral supplements</strong> — such as vitamin C, vitamin D, B-complex vitamins, calcium, magnesium, and zinc</li>
+      <li><strong>Probiotic supplements</strong> — live microorganism products marketed toward digestive or immune health</li>
+      <li><strong>Collagen supplements</strong> — peptide or hydrolysed collagen products commonly marketed for skin, joints, or nails</li>
+      <li><strong>Herbal and botanical products</strong> — plant-derived extracts and traditional preparations</li>
+      <li><strong>Omega and fatty acid products</strong> — fish oil, krill oil, and plant-based omega-3 sources</li>
+    </ul>
+    <p>
+      These are not medicines. They are intended to supplement the diet and are not approved to treat, diagnose, or prevent any medical condition.
+    </p>
+  </section>
+
+  <section>
+    <h2>Why "evidence-aware" matters</h2>
+    <p>
+      "Evidence-aware" is not the same as "guaranteed." Evidence-based supplements in Singapore — or anywhere — are products where some supporting research exists, but the quality, size, and applicability of that research varies considerably. Being evidence-aware means:
+    </p>
+    <ul>
+      <li>Asking what population the research involved and whether it applies to you</li>
+      <li>Distinguishing between surrogate measures (e.g., a biomarker change) and outcomes that matter to daily life</li>
+      <li>Being sceptical of dramatic claims, urgent framing, or absolute guarantees</li>
+      <li>Using research as a starting point for questions — not as a substitute for clinical guidance</li>
+    </ul>
+    <p>
+      No supplement claim reviewed on this site constitutes a treatment recommendation or efficacy guarantee.
+    </p>
+  </section>
+
+  <section>
+    <h2>Label basics: reading supplement labels in Singapore</h2>
+    <p>
+      Understanding supplement labels in Singapore is one of the most practical skills a consumer can develop. Key elements to check on any label:
+    </p>
+    <ul>
+      <li><strong>Ingredient list and amounts per serving</strong> — what is actually in the product and in what quantity</li>
+      <li><strong>Units</strong> — mg, mcg, IU, CFU, and what they represent for that ingredient category</li>
+      <li><strong>Total servings per container</strong> — helpful for comparing cost and planning supply</li>
+      <li><strong>Allergen and caution statements</strong> — especially relevant if you have known sensitivities</li>
+      <li><strong>Overlap awareness</strong> — if you use multiple products, similar ingredients may stack unintentionally, increasing total intake beyond what a single product suggests</li>
+    </ul>
+    <p>
+      Ingredient transparency in Singapore supplement products can vary by brand and category. Prefer products with specific, quantified ingredient listings over vague proprietary blends with undisclosed amounts.
+    </p>
+  </section>
+
+  <section>
+    <h2>Regulation context</h2>
+    <p>
+      Supplement regulation in Singapore is administered by the Health Sciences Authority (HSA) under the Health Products Act. Key points for consumers:
+    </p>
+    <ul>
+      <li>Health supplements sold in Singapore must meet safety and labelling requirements</li>
+      <li>Not all health supplements undergo individual pre-market efficacy review — regulatory compliance sets a safety baseline, not a performance guarantee</li>
+      <li>Product claims on labels and marketing materials are subject to restrictions on therapeutic claims</li>
+      <li>If a product makes strong claims about treating or curing conditions, it may be outside the regulatory definition of a supplement</li>
+    </ul>
+    <p>
+      For the most current regulatory information, refer directly to the HSA website. This site does not interpret regulatory decisions for specific products.
+    </p>
+  </section>
+
+  <section>
+    <h2>Where people buy: pharmacy vs online</h2>
+    <p>
+      Singapore residents commonly purchase pharmacy supplements in person at Guardian, Watsons, Unity, and independent pharmacies, and increasingly through online platforms such as Lazada, Shopee, and brand-direct websites.
+    </p>
+    <p>
+      <strong>Pharmacy counters</strong> offer direct access to a pharmacist who can assist with label reading, ingredient overlap questions, and interactions with any prescribed medications. This is particularly useful for first-time buyers, people managing chronic conditions, or anyone taking multiple products simultaneously.
+    </p>
+    <p>
+      <strong>Online platforms</strong> provide broader selection, easier price comparison, and the convenience of delivery. The trade-off is that you must independently verify seller credibility, confirm that product information is complete and consistent, and make label judgements without in-person support.
+    </p>
+    <p>
+      Both channels are valid. The right choice depends on your familiarity with the product, your health context, and your comfort with label interpretation.
+    </p>
+  </section>
 
   <figure class="infographic">
     <img
@@ -46,6 +140,10 @@ const startHere = articleIds.slice(0, 6).map((id) => {
       ))}
     </ul>
   </section>
+
+  <p class="hub-notice">
+    For a broader overview of the supplement landscape in Singapore, see the <a href="https://supplementsingapore.neoi.jp" target="_blank" rel="noopener">Supplements Singapore guide</a>.
+  </p>
 
   <section>
     <h2>Official Brand Information</h2>

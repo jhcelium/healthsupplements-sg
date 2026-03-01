@@ -1,10 +1,50 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { loadMarkdown } from "../lib/content";
-const about = loadMarkdown("about.md");
+
+const orgJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Health Supplements Singapore",
+  "url": "https://healthsupplements.neoi.jp/",
+  "description": "Evidence-based health supplement guidance for Singapore consumers.",
+});
 ---
-<BaseLayout title={about.frontmatter.title} description={about.frontmatter.description} path="/about">
-  <article set:html={about.html} />
+<BaseLayout
+  title="About | Health Supplements Singapore"
+  description="Purpose and approach: calm, non-commercial supplement education for Singapore."
+  path="/about/"
+>
+  <script type="application/ld+json" set:html={orgJsonLd}></script>
+
+  <h1>Purpose</h1>
+
+  <p>
+    This site exists to give Singapore residents a grounded, non-commercial starting point for supplement research. It is written with a restrained tone — no guarantees, no dramatic claims, no urgency tactics.
+  </p>
+
+  <section>
+    <h2>What this site does not do</h2>
+    <ul>
+      <li>Recommend specific products, brands, or doses</li>
+      <li>Offer medical, diagnostic, or clinical advice of any kind</li>
+      <li>Make treatment or efficacy claims</li>
+      <li>Rank, review, or endorse products</li>
+      <li>Provide dosage instructions or personalised supplement plans</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Approach and tone</h2>
+    <p>
+      Content is written with a Singapore audience in mind. The regulatory context, buying environments, and consumer landscape here are distinct — and the guidance reflects that.
+    </p>
+    <p>
+      The tone is shaped in part by how long-term supplement habits are discussed in Japan: as a quiet, stable part of a daily routine rather than an urgent intervention. Moderate, repeatable habits — consistent timing, stable intake, and periodic review with a clinician — tend to be more useful than intensive short-term experiments. This perspective is offered as a lens, not a prescription.
+    </p>
+    <p>
+      The goal is to help you form better questions for your own clinician, not to replace that conversation.
+    </p>
+  </section>
 
   <figure class="infographic">
     <img
@@ -16,6 +56,10 @@ const about = loadMarkdown("about.md");
     />
     <figcaption>A step-by-step guide for Singapore residents on how to use this site effectively.</figcaption>
   </figure>
+
+  <p class="hub-notice">
+    For a broader overview of the supplement landscape in Singapore, see the <a href="https://supplementsingapore.neoi.jp" target="_blank" rel="noopener">Supplements Singapore guide</a>.
+  </p>
 
   <section>
     <h2>Official Brand Information</h2>

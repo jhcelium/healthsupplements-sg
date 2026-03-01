@@ -7,7 +7,9 @@ interface Props {
 }
 const { title, description, path } = Astro.props;
 
-const fullTitle = title ? `${site.siteName} | ${title}` : site.siteName;
+const fullTitle = title
+  ? (title.includes("|") ? title : `${site.siteName} | ${title}`)
+  : site.siteName;
 const canonical = `${site.domain}${path ?? "/"}`;
 const desc = description ?? "";
 ---

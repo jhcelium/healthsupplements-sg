@@ -1,66 +1,125 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { loadMarkdown } from "../lib/content";
-
-const loaded = loadMarkdown("faq.md");
-const { frontmatter, html } = loaded;
-const faqItems = frontmatter.faq ?? [];
 
 const faqJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: item.a },
-  })),
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What are health supplements in Singapore?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Health supplements in Singapore are consumer products intended to add specific nutrients or ingredients to the diet. Common categories include vitamins, minerals, probiotics, collagen, and herbal products. They are not medicines and are not intended to treat or diagnose medical conditions.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How are supplements different from medicine in Singapore?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Medicines in Singapore are subject to individual clinical efficacy review and require regulatory approval before sale. Health supplements must comply with safety and labelling rules but are not individually assessed for efficacy. If you have a diagnosed condition, speak with a clinician about whether a supplement is appropriate alongside your treatment.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What should I look for on a supplement label?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Start with the ingredient list and serving size. Check the amount per serving, units used, allergen statements, and any caution notes. If you take multiple products, look for overlapping ingredients — stacking similar compounds across formulas can increase total intake unintentionally.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I avoid overlapping ingredients?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Make a simple list of every supplement product you take and note the shared ingredients across them. Discussing this list with a pharmacist or clinician is the most reliable way to identify meaningful overlaps.",
+      },
+    },
+  ],
 });
 ---
-<BaseLayout title={frontmatter.title} description={frontmatter.description} path="/faq">
+<BaseLayout
+  title="FAQ | Health Supplements in Singapore"
+  description="Common questions on supplement categories, labels, and safety framing in Singapore."
+  path="/faq/"
+>
   <style>
-    details {
-      border: 1px solid #e0e0e0;
-      border-radius: 3px;
+    .faq-question {
+      margin-top: 32px;
+    }
+    .faq-question h2 {
+      font-size: 18px;
       margin-bottom: 8px;
-      padding: 0;
     }
-    details summary {
-      font-weight: 600;
-      font-size: 15px;
-      padding: 10px 12px;
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    details summary::before {
-      content: "+";
-      font-size: 16px;
-      color: #888;
-      flex-shrink: 0;
-    }
-    details[open] summary::before {
-      content: "−";
-    }
-    details .answer {
-      padding: 0 12px 10px 12px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #333;
-      border-top: 1px solid #eee;
-      margin-top: 2px;
+    .faq-question p {
+      margin-top: 0;
+      line-height: 1.7;
     }
   </style>
 
-  <h1>{frontmatter.title}</h1>
+  <script type="application/ld+json" set:html={faqJsonLd}></script>
+
+  <h1>Supplement Questions in Singapore</h1>
 
   <div class="disclaimer">
     General educational information only. Not medical advice.
     If pregnant, nursing, or taking medication, consult a qualified clinician.
   </div>
 
-  <article set:html={html} />
+  <p>
+    These questions reflect common concerns Singapore residents raise when researching health supplements. Each answer is a prompt for reflection — not a substitute for advice from a clinician who knows your situation.
+  </p>
+
+  <div class="faq-question">
+    <h2>What are health supplements in Singapore?</h2>
+    <p>
+      Health supplements in Singapore are consumer products intended to add specific nutrients or ingredients to the diet. Common supplement categories include vitamins and minerals (such as vitamin C, vitamin D, calcium, and zinc), probiotic supplements, collagen supplements, herbal and botanical products, and omega fatty acid products. These are not medicines, and they are not intended to treat, diagnose, or prevent any medical condition.
+    </p>
+  </div>
+
+  <div class="faq-question">
+    <h2>How are supplements different from medicine in Singapore?</h2>
+    <p>
+      Medicines in Singapore are subject to individual clinical efficacy review and require regulatory approval from the Health Sciences Authority (HSA) before they can be sold. Health supplements must comply with safety and labelling requirements under the Health Products Act, but are not individually assessed for efficacy prior to sale. If you have a diagnosed condition or are under medical treatment, speak with a clinician before adding any supplement.
+    </p>
+  </div>
+
+  <div class="faq-question">
+    <h2>What should I look for on a supplement label?</h2>
+    <p>
+      Reading supplement labels in Singapore carefully is one of the most practical things you can do before purchasing. Start with the ingredient list and serving size. Then check: the amount per serving and units used (mg, mcg, IU, CFU); the number of total servings per container; allergen and caution statements; and whether the manufacturer's contact information is clearly listed. If language is vague or claims sound extreme, take extra time before deciding.
+    </p>
+  </div>
+
+  <div class="faq-question">
+    <h2>How do I avoid overlapping ingredients?</h2>
+    <p>
+      Make a simple written list of every supplement product you currently take, then note which ingredients appear in more than one product. Vitamins D and B12, zinc, and magnesium are common examples of nutrients that appear across multiple formulas simultaneously. Once you have identified overlaps, discuss the list with a pharmacist or clinician — they can assess whether the combined intake is a concern for your specific situation. Ingredient transparency in Singapore products varies; choose brands with clearly quantified ingredient listings to make this review easier.
+    </p>
+  </div>
+
+  <div class="faq-question">
+    <h2>Is "evidence-based" the same as "guaranteed"?</h2>
+    <p>
+      No. "Evidence-based" means informed by available research — which varies considerably in quality, size, and applicability. A supplement with some supporting research may still not produce the same effect for every individual, and research conducted on one population may not translate to another. Evidence-based supplements in Singapore or elsewhere are products where a research context exists; "guaranteed" is not a claim responsible supplement communication makes. Treat research as a prompt for better questions, not as a promise.
+    </p>
+  </div>
+
+  <div class="faq-question">
+    <h2>Pharmacy supplements vs online: what changes?</h2>
+    <p>
+      The product itself may be identical, but the buying context differs meaningfully. At a pharmacy, a pharmacist is available to help with label reading, ingredient overlap questions, and any interactions with prescribed medications — making pharmacy supplements in Singapore the more supported option for complex situations. Online platforms offer wider selection and price comparison, but require you to independently verify seller credibility, confirm that product information is complete and consistent across the listing, and make all label judgements without in-person guidance. Both channels are valid; the right choice depends on your health context and your confidence with label interpretation.
+    </p>
+  </div>
+
+  <div class="faq-question">
+    <h2>When should I speak to a clinician?</h2>
+    <p>
+      Speak with a clinician before starting any supplement if you are pregnant, nursing, managing a chronic condition, taking prescription medications, preparing for surgery, or selecting products for a child. Even outside these situations, raising supplement questions during a routine review is more reliable than relying on general reading. A clinician who knows your full health picture can identify overlaps, interactions, or contraindications that no educational website can assess for your individual situation.
+    </p>
+  </div>
 
   <figure class="infographic">
     <img
@@ -72,6 +131,10 @@ const faqJsonLd = JSON.stringify({
     />
     <figcaption>A decision guide for Singapore residents: when to visit a pharmacy vs shop online for health supplements.</figcaption>
   </figure>
+
+  <p class="hub-notice">
+    For a broader overview of the supplement landscape in Singapore, see the <a href="https://supplementsingapore.neoi.jp" target="_blank" rel="noopener">Supplements Singapore guide</a>.
+  </p>
 
   <section>
     <h2>Official Brand Information</h2>
@@ -85,6 +148,4 @@ const faqJsonLd = JSON.stringify({
       >Visit Official Neoi Supplement Site →</a>
     </p>
   </section>
-
-  <script type="application/ld+json" set:html={faqJsonLd}></script>
 </BaseLayout>
