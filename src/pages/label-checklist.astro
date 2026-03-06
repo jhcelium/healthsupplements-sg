@@ -16,22 +16,21 @@ const pageJsonLd = JSON.stringify({
   path="/label-checklist/"
 >
   <style>
-    .page-wrap {
-      max-width: 900px;
-    }
     .page-section {
-      margin-top: 40px;
+      margin-top: 44px;
     }
     .page-section h2 {
-      font-size: 20px;
-      margin-bottom: 14px;
+      font-size: 19px;
+      margin-bottom: 16px;
       border-bottom: 1px solid #e5e5e5;
-      padding-bottom: 6px;
+      padding-bottom: 8px;
     }
     .page-section p {
-      line-height: 1.75;
+      line-height: 1.8;
       color: #222;
+      margin-top: 0;
     }
+    /* Checklist */
     .checklist {
       list-style: none;
       padding: 0;
@@ -41,28 +40,27 @@ const pageJsonLd = JSON.stringify({
     .checklist li {
       counter-increment: checklist-counter;
       display: grid;
-      grid-template-columns: 32px 1fr;
-      gap: 0 14px;
+      grid-template-columns: 36px 1fr;
+      gap: 0 16px;
       align-items: start;
-      padding: 18px 0;
+      padding: 20px 0;
       border-bottom: 1px solid #f0f0f0;
     }
     .checklist li:last-child {
       border-bottom: none;
     }
-    .checklist li::before {
-      content: counter(checklist-counter);
-      font-size: 13px;
-      font-weight: 600;
-      color: #fff;
+    .checklist-num {
+      width: 28px;
+      height: 28px;
       background: #0b63ce;
+      color: #fff;
       border-radius: 50%;
-      width: 24px;
-      height: 24px;
+      font-size: 13px;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 2px;
+      margin-top: 1px;
       flex-shrink: 0;
     }
     .checklist-item-title {
@@ -72,29 +70,33 @@ const pageJsonLd = JSON.stringify({
     }
     .checklist-item-body {
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #333;
       margin: 0;
     }
+    /* Misread items */
     .misread-item {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+      padding-left: 14px;
+      border-left: 3px solid #e0e0e0;
     }
     .misread-item .term {
       font-weight: 600;
       font-size: 14px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      color: #111;
     }
     .misread-item p {
       font-size: 14px;
+      line-height: 1.75;
       margin: 0;
+      color: #333;
     }
   </style>
 
   <script type="application/ld+json" set:html={pageJsonLd}></script>
 
-  <div class="page-wrap">
-
-    <h1>Health Supplements in Singapore: Label Reading Checklist</h1>
+  <h1>Health Supplements in Singapore: Label Reading Checklist</h1>
 
     <p class="subtitle">
       A structured reference for reviewing what supplement labels in Singapore disclose — and what to look for before making a decision.
@@ -117,7 +119,7 @@ const pageJsonLd = JSON.stringify({
       <h2>Label reading checklist</h2>
       <ol class="checklist">
         <li>
-          <span></span>
+          <div class="checklist-num">1</div>
           <div>
             <div class="checklist-item-title">Ingredient Transparency</div>
             <p class="checklist-item-body">
@@ -126,7 +128,7 @@ const pageJsonLd = JSON.stringify({
           </div>
         </li>
         <li>
-          <span></span>
+          <div class="checklist-num">2</div>
           <div>
             <div class="checklist-item-title">Active vs Inactive Components</div>
             <p class="checklist-item-body">
@@ -135,7 +137,7 @@ const pageJsonLd = JSON.stringify({
           </div>
         </li>
         <li>
-          <span></span>
+          <div class="checklist-num">3</div>
           <div>
             <div class="checklist-item-title">Serving Size Clarity</div>
             <p class="checklist-item-body">
@@ -144,7 +146,7 @@ const pageJsonLd = JSON.stringify({
           </div>
         </li>
         <li>
-          <span></span>
+          <div class="checklist-num">4</div>
           <div>
             <div class="checklist-item-title">Allergen Disclosure</div>
             <p class="checklist-item-body">
@@ -153,7 +155,7 @@ const pageJsonLd = JSON.stringify({
           </div>
         </li>
         <li>
-          <span></span>
+          <div class="checklist-num">5</div>
           <div>
             <div class="checklist-item-title">Country of Origin</div>
             <p class="checklist-item-body">
@@ -162,7 +164,7 @@ const pageJsonLd = JSON.stringify({
           </div>
         </li>
         <li>
-          <span></span>
+          <div class="checklist-num">6</div>
           <div>
             <div class="checklist-item-title">Expiry and Storage Information</div>
             <p class="checklist-item-body">
@@ -214,6 +216,4 @@ const pageJsonLd = JSON.stringify({
         For a broader overview of supplement categories, buying contexts, and regulation in Singapore, see the <a href="https://supplementsingapore.neoi.jp" target="_blank" rel="noopener">Supplements Singapore guide</a>.
       </p>
     </div>
-
-  </div>
 </BaseLayout>
