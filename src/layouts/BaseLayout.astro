@@ -15,129 +15,208 @@ const { title, description, path } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <Seo title={title} description={description} path={path} />
     <style>
+      /* ── Base ── */
       :root {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
       }
       body {
         margin: 0;
         background: #fff;
-        color: #111;
+        color: #1a1a1a;
+        line-height: 1.75;
       }
+
+      /* ── Layout ── */
       main {
-        max-width: 760px;
+        max-width: 860px;
         margin: 0 auto;
-        padding: 24px 16px 48px;
+        padding: 36px 20px 72px;
       }
       header {
-        border-bottom: 1px solid #e5e5e5;
-        padding: 10px 16px;
+        border-bottom: 1px solid #ddd;
+        padding: 12px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
       }
+      footer {
+        border-top: 1px solid #ddd;
+        padding: 20px;
+        font-size: 13px;
+        color: #666;
+        margin-top: 0;
+      }
+
+      /* ── Navigation ── */
+      nav a {
+        margin-right: 16px;
+        font-size: 14px;
+        color: #444;
+        text-decoration: none;
+        letter-spacing: 0.01em;
+      }
+      nav a:hover {
+        color: #0b63ce;
+      }
+
+      /* ── Logo ── */
       .header-logo {
         display: flex;
         align-items: center;
         flex-shrink: 0;
       }
       .header-logo img {
-        height: 40px;
+        height: 38px;
         width: auto;
         display: block;
-        opacity: 0.9;
+        opacity: 0.85;
         transition: opacity 0.15s;
       }
       .header-logo:hover img {
         opacity: 1;
       }
-      footer {
-        border-top: 1px solid #e5e5e5;
-        padding: 16px;
-        font-size: 13px;
-        color: #555;
-        margin-top: 32px;
+
+      /* ── Typography ── */
+      h1 {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        margin: 0 0 12px;
+        color: #0d0d0d;
       }
-      nav a {
-        margin-right: 12px;
-        font-size: 14px;
-        color: #0b63ce;
-        text-decoration: none;
+      h2 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.3;
+        margin: 44px 0 12px;
+        color: #111;
       }
-      nav a:hover {
-        text-decoration: underline;
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.4;
+        margin: 28px 0 8px;
+        color: #111;
+      }
+      p {
+        margin: 0 0 1em;
+      }
+      ul, ol {
+        padding-left: 1.5em;
+        margin: 0 0 1em;
+      }
+      li {
+        margin-bottom: 0.35em;
+        line-height: 1.7;
       }
       a {
         color: #0b63ce;
+        text-decoration: none;
       }
-      h1,
-      h2,
-      h3 {
-        font-weight: 600;
+      a:hover {
+        text-decoration: underline;
       }
-      .disclaimer {
-        border: 1px solid #ddd;
-        background: #fafafa;
-        padding: 10px 12px;
-        font-size: 13px;
-        margin: 12px 0 24px;
-      }
+
+      /* ── Lead / Subtitle ── */
       .subtitle {
         font-size: 17px;
         color: #444;
-        margin: 4px 0 20px;
-        line-height: 1.5;
+        line-height: 1.65;
+        margin: 0 0 24px;
       }
+
+      /* ── Disclaimer ── */
+      .disclaimer {
+        border: 1px solid #d8d8d8;
+        border-left: 3px solid #aaa;
+        background: #f9f9f9;
+        padding: 12px 16px;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #555;
+        margin: 0 0 32px;
+      }
+
+      /* ── Primary CTA ── */
       .cta-link {
         display: inline-block;
         border: 1px solid #0b63ce;
-        padding: 8px 14px;
+        color: #0b63ce;
+        padding: 9px 18px;
         font-size: 14px;
         text-decoration: none;
-        margin-bottom: 24px;
+        margin-bottom: 32px;
+        letter-spacing: 0.01em;
       }
       .cta-link:hover {
-        background: #f4f8ff;
+        background: #f0f5ff;
+        text-decoration: none;
       }
+
+      /* ── Infographic ── */
       .infographic {
-        margin: 32px 0;
+        margin: 40px 0;
         padding: 0;
       }
       .infographic img {
         width: 100%;
         height: auto;
         display: block;
-        border: 1px solid #e5e5e5;
-        border-radius: 4px;
+        border: 1px solid #ddd;
       }
       .infographic figcaption {
         font-size: 12px;
-        color: #777;
-        margin-top: 6px;
+        color: #888;
+        margin-top: 8px;
         text-align: center;
+        font-style: italic;
       }
+
+      /* ── Cross Reference (hub link) ── */
       .hub-notice {
-        font-size: 13px;
-        color: #444;
+        font-size: 14px;
+        color: #333;
+        border: 1px solid #d0d0d0;
         border-left: 3px solid #0b63ce;
-        background: #f4f8ff;
-        padding: 8px 12px;
-        margin: 28px 0;
+        padding: 11px 16px;
+        margin: 40px 0;
+        background: #fafcff;
+        line-height: 1.6;
       }
       .hub-notice a {
         color: #0b63ce;
       }
+      .hub-notice a:hover {
+        text-decoration: underline;
+      }
+
+      /* ── Brand Link (secondary outbound) ── */
       .brand-link {
         display: inline-block;
-        border: 1px solid #999;
-        color: #444;
-        padding: 7px 13px;
+        border: 1px solid #bbb;
+        color: #333;
+        padding: 9px 18px;
         font-size: 14px;
         text-decoration: none;
+        letter-spacing: 0.01em;
       }
       .brand-link:hover {
-        border-color: #555;
+        border-color: #666;
         color: #111;
-        background: #f7f7f7;
+        background: #f5f5f5;
+        text-decoration: none;
+      }
+
+      /* ── Section heading divider ── */
+      .page-section {
+        margin-top: 44px;
+      }
+      .page-section h2 {
+        margin-top: 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e8e8e8;
       }
     </style>
     <script type="application/ld+json">

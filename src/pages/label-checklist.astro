@@ -16,35 +16,19 @@ const pageJsonLd = JSON.stringify({
   path="/label-checklist/"
 >
   <style>
-    .page-section {
-      margin-top: 44px;
-    }
-    .page-section h2 {
-      font-size: 19px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid #e5e5e5;
-      padding-bottom: 8px;
-    }
-    .page-section p {
-      line-height: 1.8;
-      color: #222;
-      margin-top: 0;
-    }
     /* Checklist */
     .checklist {
       list-style: none;
       padding: 0;
-      margin: 0;
-      counter-reset: checklist-counter;
+      margin: 16px 0 0;
     }
     .checklist li {
-      counter-increment: checklist-counter;
       display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 0 16px;
+      grid-template-columns: 40px 1fr;
+      gap: 0 14px;
       align-items: start;
       padding: 20px 0;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid #ececec;
     }
     .checklist li:last-child {
       border-bottom: none;
@@ -52,39 +36,43 @@ const pageJsonLd = JSON.stringify({
     .checklist-num {
       width: 28px;
       height: 28px;
-      background: #0b63ce;
+      background: #111;
       color: #fff;
-      border-radius: 50%;
       font-size: 13px;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 1px;
+      margin-top: 2px;
       flex-shrink: 0;
+      letter-spacing: 0;
     }
     .checklist-item-title {
       font-weight: 600;
       font-size: 15px;
-      margin-bottom: 6px;
+      margin: 0 0 6px;
+      color: #0d0d0d;
     }
     .checklist-item-body {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.75;
       color: #333;
       margin: 0;
     }
-    /* Misread items */
+    /* Term blocks (misinterpretations) */
     .misread-item {
-      margin-bottom: 24px;
-      padding-left: 14px;
-      border-left: 3px solid #e0e0e0;
+      margin-bottom: 28px;
+      padding: 14px 16px;
+      border: 1px solid #e8e8e8;
+      border-left: 3px solid #ccc;
+      background: #fafafa;
     }
     .misread-item .term {
       font-weight: 600;
       font-size: 14px;
-      margin-bottom: 6px;
-      color: #111;
+      margin: 0 0 6px;
+      color: #0d0d0d;
+      font-family: "SFMono-Regular", Consolas, monospace;
     }
     .misread-item p {
       font-size: 14px;
