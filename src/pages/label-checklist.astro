@@ -1,0 +1,219 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Health Supplements Singapore | Label Reading Checklist",
+  "url": "https://healthsupplements.neoi.jp/label-checklist/",
+  "description": "A structured checklist for reviewing health supplement labels in Singapore.",
+  "inLanguage": "en-SG",
+});
+---
+<BaseLayout
+  title="Health Supplements Singapore | Label Reading Checklist"
+  description="A structured checklist for reviewing health supplement labels in Singapore."
+  path="/label-checklist/"
+>
+  <style>
+    .page-wrap {
+      max-width: 900px;
+    }
+    .page-section {
+      margin-top: 40px;
+    }
+    .page-section h2 {
+      font-size: 20px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 6px;
+    }
+    .page-section p {
+      line-height: 1.75;
+      color: #222;
+    }
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: checklist-counter;
+    }
+    .checklist li {
+      counter-increment: checklist-counter;
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 0 14px;
+      align-items: start;
+      padding: 18px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+    .checklist li::before {
+      content: counter(checklist-counter);
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      background: #0b63ce;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .checklist-item-title {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .checklist-item-body {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
+      margin: 0;
+    }
+    .misread-item {
+      margin-bottom: 20px;
+    }
+    .misread-item .term {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .misread-item p {
+      font-size: 14px;
+      margin: 0;
+    }
+  </style>
+
+  <script type="application/ld+json" set:html={pageJsonLd}></script>
+
+  <div class="page-wrap">
+
+    <h1>Health Supplements in Singapore: Label Reading Checklist</h1>
+
+    <p class="subtitle">
+      A structured reference for reviewing what supplement labels in Singapore disclose — and what to look for before making a decision.
+    </p>
+
+    <div class="disclaimer">
+      This page provides general educational information only. It does not constitute medical advice, and nothing here should be read as a recommendation to start, stop, or change any supplement or medication.
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="page-section">
+      <h2>What "health supplements" refers to in a labelling context</h2>
+      <p>
+        In Singapore, "health supplements" refers to a broad category of consumer products intended to supplement the diet with specific nutrients or ingredients. Under the Health Sciences Authority (HSA) framework, these products are distinct from registered medicines: they are not approved for the treatment, diagnosis, or prevention of medical conditions. Labels on health supplements in Singapore are required to include certain disclosures — such as ingredient identity, amounts per serving, allergen information, and storage details — but the depth of required information can vary by product category. Understanding how to read these labels is a practical skill: it enables more informed comparisons between products and helps identify where questions for a clinician or pharmacist might arise.
+      </p>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="page-section">
+      <h2>Label reading checklist</h2>
+      <ol class="checklist">
+        <li>
+          <span></span>
+          <div>
+            <div class="checklist-item-title">Ingredient Transparency</div>
+            <p class="checklist-item-body">
+              The ingredient list should identify each component by name, not only by category or trade name. Where standardised extracts are used, the standardised compound and its percentage or amount should be declared. A complete ingredient list allows meaningful comparison between products and helps identify potential overlaps with other supplements, foods, or medications in your current routine. Vague entries such as "herbal blend" without further specification reduce the usefulness of the label as an informational tool.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span></span>
+          <div>
+            <div class="checklist-item-title">Active vs Inactive Components</div>
+            <p class="checklist-item-body">
+              Labels typically distinguish between active ingredients — the components the product is primarily designed to deliver — and inactive ingredients, which include excipients such as fillers, binders, coatings, and preservatives. Both categories are relevant for consumers with specific sensitivities or dietary considerations. Not all Singapore-sold supplements present this distinction clearly; some combine all components in a single undifferentiated list, which makes it harder to evaluate the product on ingredient grounds alone.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span></span>
+          <div>
+            <div class="checklist-item-title">Serving Size Clarity</div>
+            <p class="checklist-item-body">
+              Serving size affects every quantitative figure on the label. A product listing 500 mg of a given ingredient per serving means different things depending on whether the serving is one capsule or three. Confirm the serving unit, the number of servings per container, and how the stated amounts relate to the serving as defined. This is particularly relevant when comparing products that appear similar by ingredient name alone, since total container cost and ingredient yield can differ significantly once serving size is accounted for.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span></span>
+          <div>
+            <div class="checklist-item-title">Allergen Disclosure</div>
+            <p class="checklist-item-body">
+              Singapore labelling requirements include disclosure of major allergens, including substances derived from common sources such as soy, shellfish, fish, and dairy. Cross-contamination or co-manufacturing risks may be presented as precautionary statements. Allergen information is typically located near the end of the ingredient list or in a separate declaration panel. Review allergen disclosures before first use, and note that the absence of a precautionary statement does not guarantee the absence of trace allergens.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span></span>
+          <div>
+            <div class="checklist-item-title">Country of Origin</div>
+            <p class="checklist-item-body">
+              The country of manufacture and the country of origin of the ingredients are not always the same, and both may be listed separately. Singapore-distributed supplements may be manufactured domestically or sourced from Japan, Australia, the United States, or other markets. Where available, manufacturing and ingredient origin information appears on the back panel or in accompanying brand documentation. Neither location alone is a direct indicator of product quality; it is one data point among several that inform a full label review.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span></span>
+          <div>
+            <div class="checklist-item-title">Expiry and Storage Information</div>
+            <p class="checklist-item-body">
+              Expiry dates on supplements reflect the period during which the manufacturer guarantees stability of the stated ingredient amounts under the recommended storage conditions. Storage conditions — temperature, humidity, and light exposure — can affect product integrity before the stated expiry date. Singapore's climate (high humidity, year-round warmth) can accelerate degradation in products requiring cool, dry storage. Check both the expiry date and the specific storage instructions, and assess whether your storage environment aligns with what the label specifies.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="page-section">
+      <h2>Common misinterpretations of label terminology</h2>
+      <p>Several label conventions are regularly misread by consumers.</p>
+
+      <div class="misread-item">
+        <div class="term">"Proprietary blend"</div>
+        <p>
+          A proprietary blend listing shows the combined total weight of a group of ingredients without disclosing the individual amounts within that group. Consumers sometimes read the total blend weight as the quantity of each ingredient — this is not the case. When a label lists "Herbal Blend 600 mg" followed by five ingredients, each individual ingredient may be present in vastly different proportions, and the label does not specify which.
+        </p>
+      </div>
+
+      <div class="misread-item">
+        <div class="term">"Natural"</div>
+        <p>
+          "Natural" is not a consistently regulated term on supplement packaging in the way that, for example, specific nutrient claims are. It functions as a marketing descriptor whose meaning varies by manufacturer and product category. The ingredient list — not the front-of-pack phrasing — is the most reliable basis for understanding what a product contains.
+        </p>
+      </div>
+
+      <div class="misread-item">
+        <div class="term">Percentage daily value (%DV)</div>
+        <p>
+          Percentage daily value figures are calculated against reference intake values for a general adult population. They do not reflect individual variation in requirements, clinical targets, or age-specific considerations, and they are not available for all ingredients — particularly herbal or botanical components, where no established daily reference value exists. A %DV of 100% does not mean the amount is clinically appropriate for every person.
+        </p>
+      </div>
+
+      <div class="misread-item">
+        <div class="term">"Standardised to X%"</div>
+        <p>
+          For botanical extracts, standardisation to a percentage of an active compound can be a more informative figure than raw plant material weight, since the relevant quantity in an extract is often the identified compound rather than total biomass. However, standardisation methods vary between manufacturers, and the reference compound chosen may differ even for products described by the same plant name. Two products both "standardised" may not be directly comparable without confirming which compound and which testing method were used.
+        </p>
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="page-section">
+      <h2>Further reference</h2>
+      <p>
+        For a broader overview of supplement categories, buying contexts, and regulation in Singapore, see the <a href="https://supplementsingapore.neoi.jp" target="_blank" rel="noopener">Supplements Singapore guide</a>.
+      </p>
+    </div>
+
+  </div>
+</BaseLayout>
