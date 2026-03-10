@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Health Supplements Singapore | Ingredient Context",
+  "url": "https://healthsupplements.neoi.jp/ingredient-context/",
+  "description": "Understanding supplement ingredient terminology and labeling context in Singapore.",
+  "inLanguage": "en-SG",
+});
+---
+<BaseLayout
+  title="Health Supplements Singapore | Ingredient Context"
+  description="Understanding supplement ingredient terminology and labeling context in Singapore."
+  path="/ingredient-context/"
+>
+  <script type="application/ld+json" set:html={pageJsonLd}></script>
+
+  <h1>Health Supplements in Singapore: Ingredient Context</h1>
+
+  <p class="subtitle">
+    A reference for understanding how supplement ingredients are named, classified, and represented on product labels in Singapore.
+  </p>
+
+  <div class="disclaimer">
+    General educational information only. Not medical advice. Consult a qualified clinician before starting, stopping, or changing any supplement.
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="page-section">
+    <h2>What ingredient labelling refers to in Singapore</h2>
+    <p>
+      In Singapore, health supplements are consumer products regulated under the Health Sciences Authority (HSA) framework as a distinct category from registered medicines. Ingredient labelling on these products is required to disclose what a supplement contains — including the identity of active ingredients, supporting components, and any allergen-relevant substances. However, the depth of required disclosure varies by product type and ingredient category. Unlike pharmaceutical labelling, which follows strict clinical conventions, supplement ingredient lists use a mix of common names, scientific names, standardisation percentages, and proprietary blend groupings. Understanding these conventions — and what they do and do not confirm — is a practical foundation for comparing products and forming more informed questions for a pharmacist or clinician.
+    </p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="page-section">
+    <h2>Active vs inactive ingredients</h2>
+    <p>
+      Supplement labels typically separate ingredients into two functional categories, though not all products make this distinction explicit.
+    </p>
+    <p>
+      <strong>Active ingredients</strong> are the components the product is primarily intended to deliver — for example, a specific vitamin, mineral, probiotic strain, or botanical extract. The label should state each active ingredient by name and specify the amount per serving.
+    </p>
+    <p>
+      <strong>Inactive ingredients</strong> — also called excipients — include materials used in manufacturing: binders, fillers, coatings, flow agents, and preservatives. These are not the primary delivery components but are present in the final product. Examples include microcrystalline cellulose, magnesium stearate, silicon dioxide, and various capsule materials.
+    </p>
+    <p>
+      Both categories are relevant. Inactive ingredients can be significant for consumers with specific dietary requirements, allergen sensitivities, or restrictions based on ingredient source (for example, gelatin-based capsules vs. plant-derived alternatives). When a label does not clearly separate active from inactive components, all ingredients are typically listed in a single descending-weight order.
+    </p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="page-section">
+    <h2>Botanical vs synthetic ingredient names</h2>
+    <p>
+      One of the more complex areas of supplement labelling is how botanical and synthetic ingredients are named and described.
+    </p>
+    <p>
+      <strong>Botanical extracts</strong> appear on labels using a combination of common name, Latin binomial (genus and species), and extract specification. A typical entry might read: <em>Panax ginseng root extract (standardised to 5% ginsenosides)</em>. This tells you the plant species, the part of the plant used, that an extraction process was applied, and the percentage of a reference compound the extract is guaranteed to contain. The standardised compound — in this case ginsenosides — is the identified marker used to characterise extract potency. The same plant, a different extraction method, or a different standardisation marker can produce entries that look superficially similar but differ significantly.
+    </p>
+    <p>
+      <strong>Synthetic or isolated compounds</strong> have more standardised naming conventions. Vitamin C may appear as ascorbic acid, calcium ascorbate, or sodium ascorbate depending on the form used. Magnesium may appear as magnesium glycinate, magnesium oxide, or magnesium citrate. These distinctions reflect different chemical forms, not just naming variations — and different forms have different characteristics in terms of how they behave in manufacturing and the body.
+    </p>
+    <p>
+      When reading ingredient labels in Singapore, treat the full entry — name, form, plant part (for botanicals), and any standardisation detail — as the relevant unit of information, not the common name alone.
+    </p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="page-section">
+    <h2>Dosage and serving size representation</h2>
+    <p>
+      Ingredient amounts on supplement labels are stated per serving, not per unit (capsule, tablet, or scoop) unless the serving size is one unit. This distinction matters when comparing products.
+    </p>
+    <p>
+      A label might specify a serving size of two capsules and list 500 mg of a given ingredient per serving. A competing product might list the same ingredient at 500 mg with a serving size of one capsule — resulting in twice the per-unit quantity. Without checking the serving size definition, the labels appear identical.
+    </p>
+    <p>
+      Units vary by ingredient type:
+    </p>
+    <ul>
+      <li><strong>mg (milligrams)</strong> — used for most vitamins and minerals</li>
+      <li><strong>mcg or μg (micrograms)</strong> — used for nutrients present in very small amounts, such as vitamin B12, folate, and iodine</li>
+      <li><strong>IU (International Units)</strong> — a standardised unit of biological activity used for vitamins A, D, and E; not a weight measurement</li>
+      <li><strong>CFU (Colony Forming Units)</strong> — used for probiotic products to indicate the number of viable microorganisms per serving</li>
+      <li><strong>% (percentage)</strong> — used within standardised botanical extracts to specify the proportion of a reference compound</li>
+    </ul>
+    <p>
+      Singapore supplement products sold through regulated channels generally follow these conventions, but labelling completeness varies by brand and country of origin.
+    </p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="page-section">
+    <h2>How consumers typically interpret ingredient lists</h2>
+    <p>
+      Several consistent patterns appear in how supplement consumers in Singapore read — and sometimes misread — ingredient information.
+    </p>
+    <p>
+      <strong>Name recognition without context.</strong> Consumers often evaluate ingredients by recognising a familiar name (vitamin C, collagen, turmeric) without examining the form, amount, or standardisation detail. Two products can share an ingredient name while delivering meaningfully different entries when the full label is read.
+    </p>
+    <p>
+      <strong>Treating longer lists as stronger.</strong> A longer ingredient list is sometimes read as indicating a more comprehensive or effective product. In practice, a longer list may reflect more excipients, more filler ingredients, or a broader proprietary blend — not necessarily more of the primary active components.
+    </p>
+    <p>
+      <strong>Conflating listing order with quantity.</strong> Ingredients on supplement labels are typically listed in descending order by weight. An ingredient listed early in the list is present in greater quantity than one listed later. However, serving sizes vary significantly between products, and absolute amounts are what matter for direct comparison — not list position alone.
+    </p>
+    <p>
+      <strong>Assuming "standardised" means validated.</strong> Standardisation to a percentage of a reference compound means that the product has been formulated to contain a consistent proportion of that compound. It does not independently confirm efficacy or suitability for a given individual.
+    </p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="page-section">
+    <h2>Supplement ingredients in Singapore: search and reading context</h2>
+    <p>
+      Singapore residents searching for guidance on supplement ingredients singapore typically encounter a mix of brand marketing, clinical research summaries, and comparison platforms. Navigating this landscape is easier with a clear framework: what is the ingredient, in what form and amount, and how does this compare across products in the same category.
+    </p>
+    <p>
+      Knowing how to read supplement ingredients is a transferable skill. The same process applies whether you are evaluating a product at a pharmacy counter, reviewing a listing on an online platform, or following up on a recommendation from a clinician. The label is the primary source of product-specific information — everything else (marketing copy, online reviews, social content) is supplementary context, not a substitute for reading the label itself.
+    </p>
+    <p>
+      A structured starting point is to identify: the active ingredient and its form; the amount per serving and the serving unit; any standardisation detail for botanical extracts; allergen and caution statements; and whether the manufacturer's contact information is present and verifiable. These five elements cover most of what a consumer needs for an informed first assessment.
+    </p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="page-section">
+    <h2>Further reference</h2>
+    <p>
+      For a broader overview of supplement categories, buying contexts, and regulation in Singapore, see the <a href="https://supplementsingapore.neoi.jp" target="_blank" rel="noopener">Supplements Singapore guide</a>.
+    </p>
+    <p>
+      For a structured walkthrough of label elements, see the <a href="/label-checklist">Label Reading Checklist</a>.
+    </p>
+  </div>
+</BaseLayout>
