@@ -15,6 +15,21 @@ const websiteJsonLd = JSON.stringify({
   "url": "https://healthsupplements.neoi.jp/",
   "description": "An educational overview of health supplements in Singapore: categories, label transparency, and regulation context.",
   "inLanguage": "en-SG",
+  "about": {
+    "@type": "Thing",
+    "name": "Health Supplements in Singapore",
+    "description": "Consumer health supplement products regulated by the Health Sciences Authority (HSA) in Singapore."
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Health Supplements Singapore",
+    "url": "https://healthsupplements.neoi.jp/",
+    "logo": "https://healthsupplements.neoi.jp/images/neoi-logo.png"
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", "article > p:first-of-type", ".subtitle"]
+  }
 });
 ---
 <BaseLayout
@@ -127,7 +142,8 @@ const websiteJsonLd = JSON.stringify({
       alt="Comparison infographic: Pharmacy and retail stores offer direct consultation, pharmacist guidance on ingredient overlaps, and immediate label help. Online platforms offer broader selection and price comparison but require seller verification."
       width="1080"
       height="607"
-      loading="lazy"
+      loading="eager"
+      fetchpriority="high"
     />
     <figcaption>Where Singapore residents purchase health supplements — key considerations for each channel.</figcaption>
   </figure>

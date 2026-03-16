@@ -1,17 +1,118 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Health Supplements Singapore | Label Reading Checklist",
-  "url": "https://healthsupplements.neoi.jp/label-checklist/",
-  "description": "A structured checklist for reviewing health supplement labels in Singapore.",
-  "inLanguage": "en-SG",
-});
+const pageJsonLd = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Label Reading Checklist | Health Supplements Singapore",
+    "url": "https://healthsupplements.neoi.jp/label-checklist/",
+    "description": "A structured checklist for reviewing health supplement labels in Singapore.",
+    "inLanguage": "en-SG",
+    "dateModified": "2026-03-16",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".subtitle", "h2"]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthsupplements.neoi.jp/" },
+        { "@type": "ListItem", "position": 2, "name": "Label Reading Checklist", "item": "https://healthsupplements.neoi.jp/label-checklist/" }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Read a Health Supplement Label in Singapore",
+    "url": "https://healthsupplements.neoi.jp/label-checklist/",
+    "inLanguage": "en-SG",
+    "description": "A 6-step checklist for evaluating health supplement labels sold in Singapore.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Check Ingredient Transparency",
+        "text": "The ingredient list should identify each component by name, not only by category or trade name. Where standardised extracts are used, the standardised compound and its percentage or amount should be declared."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Identify Active vs Inactive Components",
+        "text": "Labels typically distinguish between active ingredients — the components the product is primarily designed to deliver — and inactive ingredients (excipients) such as fillers, binders, coatings, and preservatives."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Confirm Serving Size Clarity",
+        "text": "Serving size affects every quantitative figure on the label. Confirm the serving unit, the number of servings per container, and how the stated amounts relate to the serving as defined."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Review Allergen Disclosure",
+        "text": "Singapore labelling requirements include disclosure of major allergens including soy, shellfish, fish, and dairy. Review allergen disclosures before first use."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Note Country of Origin",
+        "text": "The country of manufacture and the country of origin of the ingredients are not always the same, and both may be listed separately. Neither location alone is a direct indicator of product quality."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 6,
+        "name": "Check Expiry and Storage Information",
+        "text": "Expiry dates reflect the period the manufacturer guarantees stability under recommended storage conditions. In Singapore's high-humidity climate, check storage instructions carefully as conditions can affect product integrity before the stated expiry."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "Common Label Terminology Misinterpretations",
+    "url": "https://healthsupplements.neoi.jp/label-checklist/",
+    "inLanguage": "en-SG",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does 'proprietary blend' mean on a supplement label?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A proprietary blend shows the combined total weight of a group of ingredients without disclosing individual amounts within that group. The total blend weight is not the quantity of each ingredient — individual proportions within the blend are not specified on the label."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is 'natural' a regulated term on supplement labels in Singapore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "'Natural' is not a consistently regulated term on supplement packaging in Singapore. It functions as a marketing descriptor whose meaning varies by manufacturer. The ingredient list — not the front-of-pack phrasing — is the most reliable basis for understanding what a product contains."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does percentage daily value (%DV) mean on a supplement label?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Percentage daily value figures are calculated against reference intake values for a general adult population and do not reflect individual variation in requirements. %DV is not available for all ingredients, particularly herbal or botanical components. A %DV of 100% does not mean the amount is clinically appropriate for every person."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does 'standardised to X%' mean for botanical supplements?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standardisation to a percentage means the product is formulated to contain a consistent proportion of a reference compound from a botanical extract. Standardisation methods vary between manufacturers, so two products both 'standardised' may not be directly comparable without confirming which compound and testing method were used."
+        }
+      }
+    ]
+  }
+]);
 ---
 <BaseLayout
-  title="Health Supplements Singapore | Label Reading Checklist"
+  title="Label Reading Checklist | Health Supplements Singapore"
   description="A structured checklist for reviewing health supplement labels in Singapore."
   path="/label-checklist/"
 >

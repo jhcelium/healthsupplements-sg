@@ -9,12 +9,52 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const article = loadArticle(id!);
+
+const articleUrl = `https://healthsupplements.neoi.jp/articles/${id}/`;
+
+const articleJsonLd = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.frontmatter.title,
+    "description": article.frontmatter.description,
+    "url": articleUrl,
+    "inLanguage": "en-SG",
+    "datePublished": "2025-01-15",
+    "dateModified": "2026-03-16",
+    "author": {
+      "@type": "Organization",
+      "name": "Health Supplements Singapore",
+      "url": "https://healthsupplements.neoi.jp/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Health Supplements Singapore",
+      "url": "https://healthsupplements.neoi.jp/",
+      "logo": "https://healthsupplements.neoi.jp/images/neoi-logo.png"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "article > p:first-of-type"]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthsupplements.neoi.jp/" },
+      { "@type": "ListItem", "position": 2, "name": article.frontmatter.title, "item": articleUrl }
+    ]
+  }
+]);
 ---
 <BaseLayout
   title={article.frontmatter.title}
   description={article.frontmatter.description}
-  path={`/articles/${id}`}
+  path={`/articles/${id}/`}
+  ogType="article"
 >
+  <script type="application/ld+json" set:html={articleJsonLd}></script>
   <h1>{article.frontmatter.title}</h1>
   <article set:html={article.html} />
   <p style="margin-top:32px"><a href="/">← Back to home</a></p>
