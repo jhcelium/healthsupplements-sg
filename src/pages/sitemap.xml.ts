@@ -3,13 +3,37 @@ import { listArticleIds } from "../lib/content";
 
 export const prerender = true;
 
-export async function GET() {
-  const base = `https://${site.domain}`;
-  const staticPaths = ["/", "/about", "/faq"];
-  const articlePaths = listArticleIds().map((id) => `/articles/${id}`);
-  const allPaths = [...staticPaths, ...articlePaths];
+const BUILD_DATE = "2026-03-16";
 
-  const urls = allPaths.map((p) => `<url><loc>${base}${p}</loc></url>`).join("");
+export async function GET() {
+  const base = site.domain; // already includes https://
+  const staticPages: { path: string; changefreq: string; priority: string }[] = [
+    { path: "/",                    changefreq: "weekly",  priority: "1.0" },
+    { path: "/about/",              changefreq: "monthly", priority: "0.8" },
+    { path: "/faq/",                changefreq: "monthly", priority: "0.8" },
+    { path: "/label-checklist/",    changefreq: "monthly", priority: "0.8" },
+    { path: "/ingredient-context/", changefreq: "monthly", priority: "0.8" },
+  ];
+
+  const articleEntries = listArticleIds().map((id) => ({
+    path: `/articles/${id}/`,
+    changefreq: "monthly",
+    priority: "0.7",
+  }));
+
+  const allEntries = [...staticPages, ...articleEntries];
+
+  const urls = allEntries
+    .map(
+      ({ path, changefreq, priority }) =>
+        `<url>` +
+        `<loc>${base}${path}</loc>` +
+        `<lastmod>${BUILD_DATE}</lastmod>` +
+        `<changefreq>${changefreq}</changefreq>` +
+        `<priority>${priority}</priority>` +
+        `</url>`
+    )
+    .join("");
 
   const body =
     `<?xml version="1.0" encoding="UTF-8"?>` +
