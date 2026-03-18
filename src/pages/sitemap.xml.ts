@@ -3,16 +3,23 @@ import { listArticleIds } from "../lib/content";
 
 export const prerender = true;
 
-const BUILD_DATE = "2026-03-16";
+const TODAY = new Date().toISOString().split("T")[0];
+const base = site.domain; // already includes https://
+
+type SitemapEntry = {
+  path: string;
+  changefreq: string;
+  priority: string;
+};
 
 export async function GET() {
-  const base = site.domain; // already includes https://
-  const staticPages: { path: string; changefreq: string; priority: string }[] = [
-    { path: "/",                    changefreq: "weekly",  priority: "1.0" },
-    { path: "/about/",              changefreq: "monthly", priority: "0.8" },
-    { path: "/faq/",                changefreq: "monthly", priority: "0.8" },
-    { path: "/label-checklist/",    changefreq: "monthly", priority: "0.8" },
-    { path: "/ingredient-context/", changefreq: "monthly", priority: "0.8" },
+  const staticEntries: SitemapEntry[] = [
+    { path: "/",                        changefreq: "weekly",  priority: "1.0" },
+    { path: "/about/",                  changefreq: "monthly", priority: "0.8" },
+    { path: "/faq/",                    changefreq: "monthly", priority: "0.8" },
+    { path: "/label-checklist/",        changefreq: "monthly", priority: "0.8" },
+    { path: "/ingredient-context/",     changefreq: "monthly", priority: "0.8" },
+    { path: "/serving-size-context/",   changefreq: "monthly", priority: "0.7" },
   ];
 
   const articleEntries = listArticleIds().map((id) => ({
@@ -21,14 +28,14 @@ export async function GET() {
     priority: "0.7",
   }));
 
-  const allEntries = [...staticPages, ...articleEntries];
+  const allEntries = [...staticEntries, ...articleEntries];
 
   const urls = allEntries
     .map(
       ({ path, changefreq, priority }) =>
         `<url>` +
         `<loc>${base}${path}</loc>` +
-        `<lastmod>${BUILD_DATE}</lastmod>` +
+        `<lastmod>${TODAY}</lastmod>` +
         `<changefreq>${changefreq}</changefreq>` +
         `<priority>${priority}</priority>` +
         `</url>`

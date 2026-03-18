@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { loadArticle, listArticleIds } from "../../lib/content";
+import site from "../../../data/site.json";
 
 export async function getStaticPaths() {
   const ids = listArticleIds();
@@ -9,8 +10,7 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const article = loadArticle(id!);
-
-const articleUrl = `https://healthsupplements.neoi.jp/articles/${id}/`;
+const articleUrl = `${site.domain}/articles/${id}/`;
 
 const articleJsonLd = JSON.stringify([
   {
@@ -20,32 +20,33 @@ const articleJsonLd = JSON.stringify([
     "description": article.frontmatter.description,
     "url": articleUrl,
     "inLanguage": "en-SG",
-    "datePublished": "2025-01-15",
-    "dateModified": "2026-03-16",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": articleUrl },
+    "datePublished": article.frontmatter.datePublished ?? "2025-01-15",
+    "dateModified": article.frontmatter.dateModified ?? "2026-03-16",
     "author": {
       "@type": "Organization",
       "name": "Health Supplements Singapore",
-      "url": "https://healthsupplements.neoi.jp/"
+      "url": `${site.domain}/`,
     },
     "publisher": {
       "@type": "Organization",
       "name": "Health Supplements Singapore",
-      "url": "https://healthsupplements.neoi.jp/",
-      "logo": "https://healthsupplements.neoi.jp/images/neoi-logo.png"
+      "url": `${site.domain}/`,
+      "logo": `${site.domain}/images/neoi-logo.png`,
     },
     "speakable": {
       "@type": "SpeakableSpecification",
-      "cssSelector": ["h1", "article > p:first-of-type"]
-    }
+      "cssSelector": ["h1", "article > p:first-of-type"],
+    },
   },
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthsupplements.neoi.jp/" },
-      { "@type": "ListItem", "position": 2, "name": article.frontmatter.title, "item": articleUrl }
-    ]
-  }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site.domain}/` },
+      { "@type": "ListItem", "position": 2, "name": article.frontmatter.title, "item": articleUrl },
+    ],
+  },
 ]);
 ---
 <BaseLayout

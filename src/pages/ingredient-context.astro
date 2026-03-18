@@ -12,15 +12,15 @@ const pageJsonLd = JSON.stringify([
     "dateModified": "2026-03-16",
     "speakable": {
       "@type": "SpeakableSpecification",
-      "cssSelector": ["h1", ".subtitle", "h2"]
+      "cssSelector": ["h1", ".subtitle", "h2"],
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthsupplements.neoi.jp/" },
-        { "@type": "ListItem", "position": 2, "name": "Ingredient Context", "item": "https://healthsupplements.neoi.jp/ingredient-context/" }
-      ]
-    }
+        { "@type": "ListItem", "position": 2, "name": "Ingredient Context", "item": "https://healthsupplements.neoi.jp/ingredient-context/" },
+      ],
+    },
   },
   {
     "@context": "https://schema.org",
@@ -33,40 +33,40 @@ const pageJsonLd = JSON.stringify([
         "@type": "DefinedTerm",
         "name": "Active Ingredient",
         "description": "The component a supplement is primarily intended to deliver, such as a vitamin, mineral, probiotic strain, or botanical extract. Labels must state each active ingredient by name and specify the amount per serving.",
-        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/"
+        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/",
       },
       {
         "@type": "DefinedTerm",
         "name": "Inactive Ingredient",
         "description": "Also called excipients — materials used in manufacturing including binders, fillers, coatings, flow agents, and preservatives. Present in the final product but not the primary delivery component.",
-        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/"
+        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/",
       },
       {
         "@type": "DefinedTerm",
         "name": "Standardised Extract",
         "description": "A botanical extract formulated to contain a consistent, guaranteed proportion of a specific reference compound. For example, 'standardised to 5% ginsenosides' confirms the percentage of that marker compound. Standardisation methods vary between manufacturers.",
-        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/"
+        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/",
       },
       {
         "@type": "DefinedTerm",
         "name": "CFU (Colony Forming Units)",
         "description": "A unit used for probiotic products to indicate the number of viable, live microorganisms per serving. CFU counts reflect potency at time of manufacture; stability through expiry depends on storage conditions.",
-        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/"
+        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/",
       },
       {
         "@type": "DefinedTerm",
         "name": "IU (International Units)",
         "description": "A standardised unit of biological activity used for vitamins A, D, and E. IU is not a weight measurement — it measures activity, so the IU equivalent in grams differs for each vitamin.",
-        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/"
+        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/",
       },
       {
         "@type": "DefinedTerm",
         "name": "Proprietary Blend",
         "description": "A listing that shows the combined total weight of a group of ingredients without disclosing the individual amounts of each component within the blend. Individual proportions are not specified on the label.",
-        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/"
-      }
-    ]
-  }
+        "inDefinedTermSet": "https://healthsupplements.neoi.jp/ingredient-context/",
+      },
+    ],
+  },
 ]);
 ---
 <BaseLayout

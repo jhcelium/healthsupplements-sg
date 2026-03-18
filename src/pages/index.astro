@@ -18,18 +18,18 @@ const websiteJsonLd = JSON.stringify({
   "about": {
     "@type": "Thing",
     "name": "Health Supplements in Singapore",
-    "description": "Consumer health supplement products regulated by the Health Sciences Authority (HSA) in Singapore."
+    "description": "Consumer health supplement products regulated by the Health Sciences Authority (HSA) in Singapore.",
   },
   "publisher": {
     "@type": "Organization",
     "name": "Health Supplements Singapore",
     "url": "https://healthsupplements.neoi.jp/",
-    "logo": "https://healthsupplements.neoi.jp/images/neoi-logo.png"
+    "logo": "https://healthsupplements.neoi.jp/images/neoi-logo.png",
   },
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", "article > p:first-of-type", ".subtitle"]
-  }
+    "cssSelector": ["h1", ".subtitle", "article > p:first-of-type"],
+  },
 });
 ---
 <BaseLayout
