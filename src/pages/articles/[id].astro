@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { loadArticle, listArticleIds } from "../../lib/content";
+import site from "../../../data/site.json";
 
 export async function getStaticPaths() {
   const ids = listArticleIds();
@@ -9,12 +10,40 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const article = loadArticle(id!);
+const canonical = `${site.domain}/articles/${id}/`;
+
+const articleJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": article.frontmatter.title,
+  "description": article.frontmatter.description,
+  "inLanguage": "en-SG",
+  "url": canonical,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "author": {
+    "@type": "Organization",
+    "name": "Health Supplements Singapore",
+    "url": site.domain + "/",
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Health Supplements Singapore",
+    "url": site.domain + "/",
+  },
+  "datePublished": article.frontmatter.datePublished ?? "2024-12-01",
+  "dateModified": article.frontmatter.dateModified ?? "2025-02-28",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", "article p:first-child"],
+  },
+});
 ---
 <BaseLayout
   title={article.frontmatter.title}
   description={article.frontmatter.description}
-  path={`/articles/${id}`}
+  path={`/articles/${id}/`}
 >
+  <script type="application/ld+json" set:html={articleJsonLd}></script>
   <h1>{article.frontmatter.title}</h1>
   <article set:html={article.html} />
   <p style="margin-top:32px"><a href="/">← Back to home</a></p>

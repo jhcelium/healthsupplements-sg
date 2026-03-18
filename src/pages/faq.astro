@@ -4,6 +4,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const faqJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".faq-question:first-of-type p"],
+  },
   mainEntity: [
     {
       "@type": "Question",
@@ -18,7 +22,7 @@ const faqJsonLd = JSON.stringify({
       name: "How are supplements different from medicine in Singapore?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Medicines in Singapore are subject to individual clinical efficacy review and require regulatory approval before sale. Health supplements must comply with safety and labelling rules but are not individually assessed for efficacy. If you have a diagnosed condition, speak with a clinician about whether a supplement is appropriate alongside your treatment.",
+        text: "Medicines in Singapore are subject to individual clinical efficacy review and require regulatory approval from the Health Sciences Authority (HSA) before they can be sold. Health supplements must comply with safety and labelling requirements under the Health Products Act, but are not individually assessed for efficacy prior to sale.",
       },
     },
     {
@@ -34,7 +38,31 @@ const faqJsonLd = JSON.stringify({
       name: "How do I avoid overlapping ingredients?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Make a simple list of every supplement product you take and note the shared ingredients across them. Discussing this list with a pharmacist or clinician is the most reliable way to identify meaningful overlaps.",
+        text: "Make a written list of every supplement product you currently take, then note which ingredients appear in more than one product. Discuss this list with a pharmacist or clinician — they can assess whether the combined intake is a concern for your specific situation.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is 'evidence-based' the same as 'guaranteed'?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. 'Evidence-based' means informed by available research, which varies considerably in quality, size, and applicability. A supplement with some supporting research may still not produce the same effect for every individual. Treat research as a prompt for better questions, not as a promise.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Pharmacy supplements vs online: what changes?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The product itself may be identical, but the buying context differs. At a pharmacy, a pharmacist is available to help with label reading and ingredient overlap questions. Online platforms offer wider selection and price comparison, but require independent verification of seller credibility and product information consistency.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "When should I speak to a clinician?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Speak with a clinician before starting any supplement if you are pregnant, nursing, managing a chronic condition, taking prescription medications, preparing for surgery, or selecting products for a child. Raising supplement questions during a routine review is more reliable than relying on general reading.",
       },
     },
   ],

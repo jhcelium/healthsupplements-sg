@@ -15,6 +15,19 @@ const websiteJsonLd = JSON.stringify({
   "url": "https://healthsupplements.neoi.jp/",
   "description": "An educational overview of health supplements in Singapore: categories, label transparency, and regulation context.",
   "inLanguage": "en-SG",
+  "about": {
+    "@type": "Thing",
+    "name": "Health supplements in Singapore",
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Health Supplements Singapore",
+    "url": "https://healthsupplements.neoi.jp/",
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".subtitle"],
+  },
 });
 ---
 <BaseLayout

@@ -8,6 +8,56 @@ const pageJsonLd = JSON.stringify({
   "url": "https://healthsupplements.neoi.jp/ingredient-context/",
   "description": "Understanding supplement ingredient terminology and labeling context in Singapore.",
   "inLanguage": "en-SG",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".subtitle"],
+  },
+});
+
+const definedTermSetJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Supplement Ingredient Terminology",
+  "description": "Key ingredient naming and labelling terms for health supplements in Singapore.",
+  "inLanguage": "en-SG",
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Active ingredient",
+      "description": "The primary component a supplement is designed to deliver, stated by name and amount per serving on the label.",
+      "inDefinedTermSet": "Supplement Ingredient Terminology",
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Excipient",
+      "description": "An inactive ingredient used in supplement manufacturing, such as fillers, binders, coatings, or preservatives.",
+      "inDefinedTermSet": "Supplement Ingredient Terminology",
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Botanical extract",
+      "description": "An ingredient derived from a plant source, typically described on labels using genus/species name, plant part, and standardisation percentage.",
+      "inDefinedTermSet": "Supplement Ingredient Terminology",
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Standardisation",
+      "description": "Formulation of a botanical extract to contain a consistent proportion of a specified reference compound.",
+      "inDefinedTermSet": "Supplement Ingredient Terminology",
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "IU (International Unit)",
+      "description": "A unit of biological activity used for fat-soluble vitamins including A, D, and E; not a weight measurement.",
+      "inDefinedTermSet": "Supplement Ingredient Terminology",
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "CFU (Colony Forming Unit)",
+      "description": "A unit used for probiotic supplements indicating the number of viable microorganisms per serving.",
+      "inDefinedTermSet": "Supplement Ingredient Terminology",
+    },
+  ],
 });
 ---
 <BaseLayout
@@ -16,6 +66,7 @@ const pageJsonLd = JSON.stringify({
   path="/ingredient-context/"
 >
   <script type="application/ld+json" set:html={pageJsonLd}></script>
+  <script type="application/ld+json" set:html={definedTermSetJsonLd}></script>
 
   <h1>Health Supplements in Singapore: Ingredient Context</h1>
 

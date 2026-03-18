@@ -12,17 +12,28 @@ const fullTitle = title
   : site.siteName;
 const canonical = `${site.domain}${path ?? "/"}`;
 const desc = description ?? "";
+const ogImage = `${site.domain}/images/neoi-logo.png`;
 ---
 <title>{fullTitle}</title>
 <meta name="robots" content="index,follow" />
 {desc && <meta name="description" content={desc} />}
 <link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang="en-SG" href={canonical} />
+<link rel="alternate" hreflang="x-default" href={canonical} />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content={fullTitle} />
 {desc && <meta property="og:description" content={desc} />}
 <meta property="og:url" content={canonical} />
+<meta property="og:locale" content={site.locale} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="512" />
+<meta property="og:image:height" content="512" />
+<meta property="og:image:alt" content={site.siteName} />
+<meta property="og:site_name" content={site.siteName} />
 
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 {desc && <meta name="twitter:description" content={desc} />}
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={site.siteName} />
