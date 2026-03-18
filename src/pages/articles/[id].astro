@@ -10,38 +10,50 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const article = loadArticle(id!);
-const canonical = `${site.domain}/articles/${id}/`;
+const articleUrl = `${site.domain}/articles/${id}/`;
 
-const articleJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": article.frontmatter.title,
-  "description": article.frontmatter.description,
-  "inLanguage": "en-SG",
-  "url": canonical,
-  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
-  "author": {
-    "@type": "Organization",
-    "name": "Health Supplements Singapore",
-    "url": site.domain + "/",
+const articleJsonLd = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.frontmatter.title,
+    "description": article.frontmatter.description,
+    "url": articleUrl,
+    "inLanguage": "en-SG",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": articleUrl },
+    "datePublished": article.frontmatter.datePublished ?? "2025-01-15",
+    "dateModified": article.frontmatter.dateModified ?? "2026-03-16",
+    "author": {
+      "@type": "Organization",
+      "name": "Health Supplements Singapore",
+      "url": `${site.domain}/`,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Health Supplements Singapore",
+      "url": `${site.domain}/`,
+      "logo": `${site.domain}/images/neoi-logo.png`,
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "article > p:first-of-type"],
+    },
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Health Supplements Singapore",
-    "url": site.domain + "/",
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site.domain}/` },
+      { "@type": "ListItem", "position": 2, "name": article.frontmatter.title, "item": articleUrl },
+    ],
   },
-  "datePublished": article.frontmatter.datePublished ?? "2024-12-01",
-  "dateModified": article.frontmatter.dateModified ?? "2025-02-28",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", "article p:first-child"],
-  },
-});
+]);
 ---
 <BaseLayout
   title={article.frontmatter.title}
   description={article.frontmatter.description}
   path={`/articles/${id}/`}
+  ogType="article"
 >
   <script type="application/ld+json" set:html={articleJsonLd}></script>
   <h1>{article.frontmatter.title}</h1>

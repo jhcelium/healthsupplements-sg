@@ -4,9 +4,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const faqJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": "https://healthsupplements.neoi.jp/faq/",
+  "name": "Supplement Questions in Singapore",
+  "url": "https://healthsupplements.neoi.jp/faq/",
+  "inLanguage": "en-SG",
+  "dateModified": "2026-03-16",
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", ".faq-question:first-of-type p"],
+    "cssSelector": ["h1", ".subtitle", ".faq-question h2"],
   },
   mainEntity: [
     {
@@ -22,7 +27,7 @@ const faqJsonLd = JSON.stringify({
       name: "How are supplements different from medicine in Singapore?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Medicines in Singapore are subject to individual clinical efficacy review and require regulatory approval from the Health Sciences Authority (HSA) before they can be sold. Health supplements must comply with safety and labelling requirements under the Health Products Act, but are not individually assessed for efficacy prior to sale.",
+        text: "Medicines in Singapore require regulatory approval from the Health Sciences Authority (HSA) after individual clinical efficacy review. Health supplements must comply with safety and labelling rules under the Health Products Act but are not individually assessed for efficacy prior to sale.",
       },
     },
     {
@@ -30,7 +35,7 @@ const faqJsonLd = JSON.stringify({
       name: "What should I look for on a supplement label?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Start with the ingredient list and serving size. Check the amount per serving, units used, allergen statements, and any caution notes. If you take multiple products, look for overlapping ingredients — stacking similar compounds across formulas can increase total intake unintentionally.",
+        text: "Start with the ingredient list and serving size. Check the amount per serving, units used (mg, mcg, IU, CFU), total servings per container, allergen statements, and any caution notes. If you take multiple products, look for overlapping ingredients to avoid unintentional stacking.",
       },
     },
     {
@@ -38,31 +43,31 @@ const faqJsonLd = JSON.stringify({
       name: "How do I avoid overlapping ingredients?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Make a written list of every supplement product you currently take, then note which ingredients appear in more than one product. Discuss this list with a pharmacist or clinician — they can assess whether the combined intake is a concern for your specific situation.",
+        text: "Make a written list of every supplement you take and note which ingredients appear in more than one product. Vitamins D, B12, zinc, and magnesium commonly appear across multiple formulas. Discuss the combined list with a pharmacist or clinician to assess whether the total intake is a concern.",
       },
     },
     {
       "@type": "Question",
-      name: "Is 'evidence-based' the same as 'guaranteed'?",
+      name: "Is evidence-based the same as guaranteed?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. 'Evidence-based' means informed by available research, which varies considerably in quality, size, and applicability. A supplement with some supporting research may still not produce the same effect for every individual. Treat research as a prompt for better questions, not as a promise.",
+        text: "No. Evidence-based means informed by available research, which varies in quality, size, and applicability. A supplement with supporting research may not produce the same effect for every individual. Treat research as a prompt for better questions, not as a performance guarantee.",
       },
     },
     {
       "@type": "Question",
-      name: "Pharmacy supplements vs online: what changes?",
+      name: "What is the difference between pharmacy supplements and buying online in Singapore?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The product itself may be identical, but the buying context differs. At a pharmacy, a pharmacist is available to help with label reading and ingredient overlap questions. Online platforms offer wider selection and price comparison, but require independent verification of seller credibility and product information consistency.",
+        text: "At a pharmacy, a pharmacist can assist with label reading, ingredient overlap questions, and medication interactions. Online platforms offer wider selection and price comparison but require you to independently verify seller credibility and assess labels without in-person guidance.",
       },
     },
     {
       "@type": "Question",
-      name: "When should I speak to a clinician?",
+      name: "When should I speak to a clinician about supplements?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Speak with a clinician before starting any supplement if you are pregnant, nursing, managing a chronic condition, taking prescription medications, preparing for surgery, or selecting products for a child. Raising supplement questions during a routine review is more reliable than relying on general reading.",
+        text: "Speak with a clinician before starting any supplement if you are pregnant, nursing, managing a chronic condition, taking prescription medications, preparing for surgery, or selecting products for a child. A clinician can identify overlaps, interactions, or contraindications specific to your health situation.",
       },
     },
   ],

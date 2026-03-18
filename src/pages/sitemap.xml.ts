@@ -8,7 +8,6 @@ const base = site.domain; // already includes https://
 
 type SitemapEntry = {
   path: string;
-  lastmod?: string;
   changefreq: string;
   priority: string;
 };
@@ -16,33 +15,31 @@ type SitemapEntry = {
 export async function GET() {
   const staticEntries: SitemapEntry[] = [
     { path: "/",                        changefreq: "weekly",  priority: "1.0" },
-    { path: "/about/",                  changefreq: "monthly", priority: "0.7" },
+    { path: "/about/",                  changefreq: "monthly", priority: "0.8" },
     { path: "/faq/",                    changefreq: "monthly", priority: "0.8" },
     { path: "/label-checklist/",        changefreq: "monthly", priority: "0.8" },
-    { path: "/ingredient-context/",     changefreq: "monthly", priority: "0.7" },
+    { path: "/ingredient-context/",     changefreq: "monthly", priority: "0.8" },
     { path: "/serving-size-context/",   changefreq: "monthly", priority: "0.7" },
   ];
 
-  const articleEntries: SitemapEntry[] = listArticleIds().map((id) => ({
+  const articleEntries = listArticleIds().map((id) => ({
     path: `/articles/${id}/`,
     changefreq: "monthly",
-    priority: "0.6",
+    priority: "0.7",
   }));
 
   const allEntries = [...staticEntries, ...articleEntries];
 
   const urls = allEntries
-    .map((e) => {
-      const lm = e.lastmod ?? TODAY;
-      return (
+    .map(
+      ({ path, changefreq, priority }) =>
         `<url>` +
-        `<loc>${base}${e.path}</loc>` +
-        `<lastmod>${lm}</lastmod>` +
-        `<changefreq>${e.changefreq}</changefreq>` +
-        `<priority>${e.priority}</priority>` +
+        `<loc>${base}${path}</loc>` +
+        `<lastmod>${TODAY}</lastmod>` +
+        `<changefreq>${changefreq}</changefreq>` +
+        `<priority>${priority}</priority>` +
         `</url>`
-      );
-    })
+    )
     .join("");
 
   const body =
