@@ -1,12 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { canonicalUrl } from "../lib/urls";
+
+const rootUrl = canonicalUrl("/");
+const logoUrl = `${rootUrl}/images/neoi-logo.png`;
 
 const orgJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Health Supplements Singapore",
-  "url": "https://healthsupplements.neoi.jp/",
-  "logo": "https://healthsupplements.neoi.jp/images/neoi-logo.png",
+  "url": rootUrl,
+  "logo": logoUrl,
   "description": "Evidence-based health supplement guidance for Singapore consumers.",
   "inLanguage": "en-SG",
   "areaServed": { "@type": "Country", "name": "Singapore" },
@@ -26,9 +30,9 @@ const orgJsonLd = JSON.stringify({
 <BaseLayout
   title="About | Health Supplements Singapore"
   description="Purpose and approach: calm, non-commercial supplement education for Singapore."
-  path="/about/"
+  path="/about"
 >
-  <script type="application/ld+json" set:html={orgJsonLd}></script>
+  <script slot="head" type="application/ld+json" set:html={orgJsonLd}></script>
 
   <h1>Purpose</h1>
 

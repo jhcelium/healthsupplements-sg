@@ -1,0 +1,47 @@
+---
+import { canonicalUrl } from "../lib/urls";
+
+export interface Props {
+  /** Ordered trail; each segment has a label and site path (e.g. `/faq`). Last segment is the current page. */
+  items: { name: string; path: string }[];
+  /** Set false if the page already emits BreadcrumbList JSON-LD elsewhere. */
+  includeJsonLd?: boolean;
+}
+
+const { items, includeJsonLd = true } = Astro.props;
+
+const listElements = items.map((item, i) => ({
+  "@type": "ListItem",
+  position: i + 1,
+  name: item.name,
+  item: canonicalUrl(item.path),
+}));
+
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: listElements,
+});
+
+/** Relative href matching site navigation (no trailing slash). */
+function hrefPath(p: string): string {
+  if (p === "/" || p === "") return "/";
+  return p.endsWith("/") ? p.slice(0, -1) : p;
+}
+---
+{includeJsonLd && (
+  <script type="application/ld+json" set:html={breadcrumbJsonLd} />
+)}
+<nav class="breadcrumb-trail" aria-label="Breadcrumb">
+  <ol>
+    {items.map((item, i) => (
+      <li>
+        {i < items.length - 1 ? (
+          <a href={hrefPath(item.path)}>{item.name}</a>
+        ) : (
+          <span aria-current="page">{item.name}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

@@ -1,12 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BreadcrumbTrail from "../components/BreadcrumbTrail.astro";
+import { canonicalUrl } from "../lib/urls";
+
+const faqPageUrl = canonicalUrl("/faq");
 
 const faqJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "@id": "https://healthsupplements.neoi.jp/faq/",
+  "@id": faqPageUrl,
   "name": "Supplement Questions in Singapore",
-  "url": "https://healthsupplements.neoi.jp/faq/",
+  "url": faqPageUrl,
   "inLanguage": "en-SG",
   "dateModified": "2026-03-16",
   "speakable": {
@@ -76,8 +80,9 @@ const faqJsonLd = JSON.stringify({
 <BaseLayout
   title="FAQ | Health Supplements in Singapore"
   description="Common questions on supplement categories, labels, and safety framing in Singapore."
-  path="/faq/"
+  path="/faq"
 >
+  <script slot="head" type="application/ld+json" set:html={faqJsonLd}></script>
   <style>
     .faq-question {
       margin-top: 40px;
@@ -101,7 +106,12 @@ const faqJsonLd = JSON.stringify({
     }
   </style>
 
-  <script type="application/ld+json" set:html={faqJsonLd}></script>
+  <BreadcrumbTrail
+    items={[
+      { name: "Home", path: "/" },
+      { name: "FAQ", path: "/faq" },
+    ]}
+  />
 
   <h1>Supplement Questions in Singapore</h1>
 
