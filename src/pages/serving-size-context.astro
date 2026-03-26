@@ -1,11 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BreadcrumbTrail from "../components/BreadcrumbTrail.astro";
+import { canonicalUrl } from "../lib/urls";
+
+const pageUrl = canonicalUrl("/serving-size-context");
 
 const pageJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Health Supplements Singapore | Serving Size Context",
-  "url": "https://healthsupplements.neoi.jp/serving-size-context/",
+  "url": pageUrl,
   "description": "A structured explanation of serving size and amount-per-serving language on supplement labels in Singapore.",
   "inLanguage": "en-SG",
   "speakable": {
@@ -17,9 +21,16 @@ const pageJsonLd = JSON.stringify({
 <BaseLayout
   title="Health Supplements Singapore | Serving Size Context"
   description="A structured explanation of serving size and amount-per-serving language on supplement labels in Singapore."
-  path="/serving-size-context/"
+  path="/serving-size-context"
 >
-  <script type="application/ld+json" set:html={pageJsonLd}></script>
+  <script slot="head" type="application/ld+json" set:html={pageJsonLd}></script>
+
+  <BreadcrumbTrail
+    items={[
+      { name: "Home", path: "/" },
+      { name: "Serving Size Context", path: "/serving-size-context" },
+    ]}
+  />
 
   <h1>Health Supplements in Singapore: Serving Size Context</h1>
 

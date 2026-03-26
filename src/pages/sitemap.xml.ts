@@ -1,10 +1,9 @@
-import site from "../../data/site.json";
+import { canonicalUrl } from "../lib/urls";
 import { listArticleIds } from "../lib/content";
 
 export const prerender = true;
 
 const TODAY = new Date().toISOString().split("T")[0];
-const base = site.domain; // already includes https://
 
 type SitemapEntry = {
   path: string;
@@ -14,16 +13,16 @@ type SitemapEntry = {
 
 export async function GET() {
   const staticEntries: SitemapEntry[] = [
-    { path: "/",                        changefreq: "weekly",  priority: "1.0" },
-    { path: "/about/",                  changefreq: "monthly", priority: "0.8" },
-    { path: "/faq/",                    changefreq: "monthly", priority: "0.8" },
-    { path: "/label-checklist/",        changefreq: "monthly", priority: "0.8" },
-    { path: "/ingredient-context/",     changefreq: "monthly", priority: "0.8" },
-    { path: "/serving-size-context/",   changefreq: "monthly", priority: "0.7" },
+    { path: "/",                      changefreq: "weekly",  priority: "1.0" },
+    { path: "/about",                changefreq: "monthly", priority: "0.8" },
+    { path: "/faq",                  changefreq: "monthly", priority: "0.8" },
+    { path: "/label-checklist",      changefreq: "monthly", priority: "0.8" },
+    { path: "/ingredient-context",   changefreq: "monthly", priority: "0.8" },
+    { path: "/serving-size-context", changefreq: "monthly", priority: "0.7" },
   ];
 
   const articleEntries = listArticleIds().map((id) => ({
-    path: `/articles/${id}/`,
+    path: `/articles/${id}`,
     changefreq: "monthly",
     priority: "0.7",
   }));
@@ -34,7 +33,7 @@ export async function GET() {
     .map(
       ({ path, changefreq, priority }) =>
         `<url>` +
-        `<loc>${base}${path}</loc>` +
+        `<loc>${canonicalUrl(path)}</loc>` +
         `<lastmod>${TODAY}</lastmod>` +
         `<changefreq>${changefreq}</changefreq>` +
         `<priority>${priority}</priority>` +
@@ -44,6 +43,7 @@ export async function GET() {
 
   const body =
     `<?xml version="1.0" encoding="UTF-8"?>` +
+    `<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` +
     urls +
     `</urlset>`;

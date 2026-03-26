@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { loadArticle, listArticleIds } from "../../lib/content";
-import site from "../../../data/site.json";
+import { canonicalUrl } from "../../lib/urls";
 
 export async function getStaticPaths() {
   const ids = listArticleIds();
@@ -10,7 +10,9 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const article = loadArticle(id!);
-const articleUrl = `${site.domain}/articles/${id}/`;
+const rootUrl = canonicalUrl("/");
+const articleUrl = canonicalUrl(`/articles/${id}`);
+const logoUrl = `${rootUrl}/images/neoi-logo.png`;
 
 const articleJsonLd = JSON.stringify([
   {
@@ -26,13 +28,13 @@ const articleJsonLd = JSON.stringify([
     "author": {
       "@type": "Organization",
       "name": "Health Supplements Singapore",
-      "url": `${site.domain}/`,
+      "url": rootUrl,
     },
     "publisher": {
       "@type": "Organization",
       "name": "Health Supplements Singapore",
-      "url": `${site.domain}/`,
-      "logo": `${site.domain}/images/neoi-logo.png`,
+      "url": rootUrl,
+      "logo": logoUrl,
     },
     "speakable": {
       "@type": "SpeakableSpecification",
@@ -43,7 +45,7 @@ const articleJsonLd = JSON.stringify([
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site.domain}/` },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": rootUrl },
       { "@type": "ListItem", "position": 2, "name": article.frontmatter.title, "item": articleUrl },
     ],
   },
@@ -52,10 +54,10 @@ const articleJsonLd = JSON.stringify([
 <BaseLayout
   title={article.frontmatter.title}
   description={article.frontmatter.description}
-  path={`/articles/${id}/`}
+  path={`/articles/${id}`}
   ogType="article"
 >
-  <script type="application/ld+json" set:html={articleJsonLd}></script>
+  <script slot="head" type="application/ld+json" set:html={articleJsonLd}></script>
   <h1>{article.frontmatter.title}</h1>
   <article set:html={article.html} />
   <p style="margin-top:32px"><a href="/">← Back to home</a></p>

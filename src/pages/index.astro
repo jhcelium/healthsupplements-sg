@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { loadArticle, listArticleIds } from "../lib/content";
+import { canonicalUrl } from "../lib/urls";
 
 const articleIds = listArticleIds();
 const startHere = articleIds.slice(0, 6).map((id) => {
@@ -8,11 +9,14 @@ const startHere = articleIds.slice(0, 6).map((id) => {
   return { id, href: `/articles/${id}`, title: frontmatter.title };
 });
 
+const rootUrl = canonicalUrl("/");
+const logoUrl = `${rootUrl}/images/neoi-logo.png`;
+
 const websiteJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Health Supplements Singapore",
-  "url": "https://healthsupplements.neoi.jp/",
+  "url": rootUrl,
   "description": "An educational overview of health supplements in Singapore: categories, label transparency, and regulation context.",
   "inLanguage": "en-SG",
   "about": {
@@ -23,8 +27,8 @@ const websiteJsonLd = JSON.stringify({
   "publisher": {
     "@type": "Organization",
     "name": "Health Supplements Singapore",
-    "url": "https://healthsupplements.neoi.jp/",
-    "logo": "https://healthsupplements.neoi.jp/images/neoi-logo.png",
+    "url": rootUrl,
+    "logo": logoUrl,
   },
   "speakable": {
     "@type": "SpeakableSpecification",
@@ -37,7 +41,7 @@ const websiteJsonLd = JSON.stringify({
   description="An educational overview of health supplements in Singapore: categories, label transparency, and regulation context."
   path="/"
 >
-  <script type="application/ld+json" set:html={websiteJsonLd}></script>
+  <script slot="head" type="application/ld+json" set:html={websiteJsonLd}></script>
 
   <h1>Health Supplements in Singapore: Evidence-Aware Guidance</h1>
 
