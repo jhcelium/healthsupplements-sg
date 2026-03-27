@@ -19,6 +19,7 @@ export async function GET() {
     { path: "/label-checklist",      changefreq: "monthly", priority: "0.8" },
     { path: "/ingredient-context",   changefreq: "monthly", priority: "0.8" },
     { path: "/serving-size-context", changefreq: "monthly", priority: "0.7" },
+    { path: "/definitions",            changefreq: "monthly", priority: "0.7" },
   ];
 
   const articleEntries = listArticleIds().map((id) => ({

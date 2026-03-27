@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BreadcrumbTrail from "../components/BreadcrumbTrail.astro";
+import {
+  buildBreadcrumbListJsonLd,
+  buildDefinedTermSetJsonLd,
+  buildWebPageJsonLd,
+  serializeJsonLd,
+} from "../lib/schema-jsonld";
+
+const path = "/definitions";
+const pageTitle = "Definitions | Health Supplements Singapore";
+const pageDescription =
+  "Neutral glossary-style definitions for health supplement labelling concepts commonly used in Singapore.";
+
+const webPageLd = serializeJsonLd(
+  buildWebPageJsonLd({
+    name: pageTitle,
+    path,
+    description: pageDescription,
+    speakableSelectors: ["h1", ".subtitle"],
+  })
+);
+
+const definedTermSetLd = serializeJsonLd(
+  buildDefinedTermSetJsonLd({
+    name: "Health supplement label definitions (Singapore context)",
+    path,
+    description:
+      "Educational definitions for how common terms appear on supplement packaging and in consumer reading—not clinical or product-specific guidance.",
+    terms: [
+      {
+        name: "Health supplement (general usage)",
+        description:
+          "A consumer product category intended to supplement the diet with nutrients or other substances. In Singapore it is regulated separately from registered medicines; labels focus on ingredients, serving information, and safety-related statements rather than therapeutic claims.",
+      },
+      {
+        name: "Active ingredient (label)",
+        description:
+          "A component the product is primarily formulated to deliver, identified on the label by name and typically paired with an amount per serving. It is distinct from inactive ingredients used for formulation or stability.",
+      },
+      {
+        name: "Serving size (label)",
+        description:
+          "The manufacturer-stated unit that counts as one serving—such as a number of capsules or a measured volume. Other quantitative values on the panel are expressed relative to this unit.",
+      },
+    ],
+  })
+);
+
+const breadcrumbLd = serializeJsonLd(
+  buildBreadcrumbListJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Definitions", path },
+  ])
+);
+---
+<BaseLayout title={pageTitle} description={pageDescription} path={path}>
+  <script slot="head" type="application/ld+json" set:html={webPageLd}></script>
+  <script slot="head" type="application/ld+json" set:html={definedTermSetLd}></script>
+  <script slot="head" type="application/ld+json" set:html={breadcrumbLd}></script>
+
+  <BreadcrumbTrail
+    includeJsonLd={false}
+    items={[
+      { name: "Home", path: "/" },
+      { name: "Definitions", path },
+    ]}
+  />
+
+  <h1>Supplement definitions (Singapore context)</h1>
+
+  <p class="subtitle">
+    Short, neutral explanations of how common terms appear on labels and in everyday reading. This is not
+    medical advice and not a substitute for product-specific label text or professional guidance.
+  </p>
+
+  <div class="page-section">
+    <h2>On this page</h2>
+    <p>
+      Structured data on this URL includes <code>WebPage</code>, <code>DefinedTermSet</code>, and
+      <code>BreadcrumbList</code> JSON-LD, aligned with the same meta and canonical rules as the rest of the
+      site. For step-by-step label review, see the <a href="/label-checklist">Label Reading Checklist</a>; for
+      ingredient naming, see <a href="/ingredient-context">Ingredient Context</a>.
+    </p>
+  </div>
+</BaseLayout>

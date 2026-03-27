@@ -15,6 +15,8 @@ export type SEOHeadProps = {
   ogDescription: string;
   ogUrl: string;
   ogImage: string;
+  /** e.g. website | article — matches `Seo.astro` `ogType`. */
+  ogType?: string;
   /** e.g. en_SG */
   ogLocale: string;
   ogImageWidth?: string;
@@ -40,6 +42,7 @@ export default function SEOHead({
   ogDescription,
   ogUrl,
   ogImage,
+  ogType = "website",
   ogLocale,
   ogImageWidth = "1080",
   ogImageHeight = "607",
@@ -65,7 +68,7 @@ export default function SEOHead({
       <link rel="icon" type="image/png" href="/images/neoi-logo.png" />
       <meta name="theme-color" content="#ffffff" />
 
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={ogType} />
       <meta property="og:title" content={ogTitle} />
       {ogDescription ? (
         <meta property="og:description" content={ogDescription} />
