@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
  * so metadata is emitted in `<head>`. Helmet rendered under `<main>` does not relocate tags during Astro SSG.
  *
  * FAQ page: use `getFaqSEOHeadProps()` from `src/lib/faq-content.ts` with `<SEOHead {...getFaqSEOHeadProps()} />`.
+ * Definitions page: use `getDefinitionsSEOHeadProps()` from `src/lib/definitions-content.ts` with `<SEOHead {...getDefinitionsSEOHeadProps()} />`.
  */
 export type SEOHeadProps = {
   title: string;
