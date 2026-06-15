@@ -73,5 +73,5 @@ Related reading on this site: [Ingredient context](/ingredient-context) · [Labe
 **Sources**
 - HSA — Regulatory overview of health supplements: https://www.hsa.gov.sg/health-supplements/overview/
 - HSA — Health supplement claims: https://www.hsa.gov.sg/health-supplements/claims/
-- HSA — Guidelines for claims and claims substantiation of health supplements (PDF): https://www.hsa.gov.sg/docs/default-source/hprg-tmhs/chpb-tmhs/tmhs_claims_guidelines.pdf
+- HSA — Claims substantiation guidelines (PDF): https://file.go.gov.sg/hsa-chp-claims-guidelines.pdf
 - U.S. ITA — Singapore nutritional supplements market intelligence: https://www.trade.gov/market-intelligence/singapore-nutritional-supplements
